@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="acmesite_conservadoraModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="acmesite_conservadoraModelStoreContainer">
+          <EntitySet Name="balancete_condominios" EntityType="acmesite_conservadoraModel.Store.balancete_condominios" store:Type="Tables" Schema="acmesite_conservadora" />
+          <EntitySet Name="balancetes" EntityType="acmesite_conservadoraModel.Store.balancetes" store:Type="Tables" Schema="acmesite_conservadora" />
+          <EntitySet Name="boletos" EntityType="acmesite_conservadoraModel.Store.boletos" store:Type="Tables" Schema="acmesite_conservadora" />
+          <EntitySet Name="condominios" EntityType="acmesite_conservadoraModel.Store.condominios" store:Type="Tables" Schema="acmesite_conservadora" />
+          <EntitySet Name="condominios_moradores" EntityType="acmesite_conservadoraModel.Store.condominios_moradores" store:Type="Tables" Schema="acmesite_conservadora" />
+          <EntitySet Name="moradores" EntityType="acmesite_conservadoraModel.Store.moradores" store:Type="Tables" Schema="acmesite_conservadora" />
+          <EntitySet Name="recados" EntityType="acmesite_conservadoraModel.Store.recados" store:Type="Tables" Schema="acmesite_conservadora" />
+          <AssociationSet Name="fk_arquivos_has_condominios_arquivos1" Association="acmesite_conservadoraModel.Store.fk_arquivos_has_condominios_arquivos1">
+            <End Role="balancetes" EntitySet="balancetes" />
+            <End Role="balancete_condominios" EntitySet="balancete_condominios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_arquivos_has_condominios_condominios1" Association="acmesite_conservadoraModel.Store.fk_arquivos_has_condominios_condominios1">
+            <End Role="condominios" EntitySet="condominios" />
+            <End Role="balancete_condominios" EntitySet="balancete_condominios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Boletos_Moradores1" Association="acmesite_conservadoraModel.Store.fk_Boletos_Moradores1">
+            <End Role="moradores" EntitySet="moradores" />
+            <End Role="boletos" EntitySet="boletos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_condominios_has_inquilinos_condominios1" Association="acmesite_conservadoraModel.Store.fk_condominios_has_inquilinos_condominios1">
+            <End Role="condominios" EntitySet="condominios" />
+            <End Role="condominios_moradores" EntitySet="condominios_moradores" />
+          </AssociationSet>
+          <AssociationSet Name="fk_condominios_has_inquilinos_inquilinos1" Association="acmesite_conservadoraModel.Store.fk_condominios_has_inquilinos_inquilinos1">
+            <End Role="moradores" EntitySet="moradores" />
+            <End Role="condominios_moradores" EntitySet="condominios_moradores" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Recados_condominios1" Association="acmesite_conservadoraModel.Store.fk_Recados_condominios1">
+            <End Role="condominios" EntitySet="condominios" />
+            <End Role="recados" EntitySet="recados" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="balancete_condominios">
+          <Key>
+            <PropertyRef Name="idbalancete" />
+            <PropertyRef Name="idcondominios" />
+          </Key>
+          <Property Name="idbalancete" Type="int" Nullable="false" />
+          <Property Name="idcondominios" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="balancetes">
+          <Key>
+            <PropertyRef Name="idbalancete" />
+          </Key>
+          <Property Name="idbalancete" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipoArquivo" Type="varchar" MaxLength="45" />
+          <Property Name="nomeArquivo" Type="varchar" MaxLength="45" />
+          <Property Name="data" Type="date" />
+        </EntityType>
+        <EntityType Name="boletos">
+          <Key>
+            <PropertyRef Name="idboletos" />
+          </Key>
+          <Property Name="idboletos" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="sitiuacao" Type="varchar" MaxLength="45" />
+          <Property Name="idmoradores" Type="int" Nullable="false" />
+          <Property Name="caminhoArquivo" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="condominios">
+          <Key>
+            <PropertyRef Name="idcondominios" />
+          </Key>
+          <Property Name="idcondominios" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" MaxLength="45" />
+          <Property Name="endereco" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="condominios_moradores">
+          <Key>
+            <PropertyRef Name="idcondominios" />
+            <PropertyRef Name="idmoradores" />
+          </Key>
+          <Property Name="idcondominios" Type="int" Nullable="false" />
+          <Property Name="idmoradores" Type="int" Nullable="false" />
+          <Property Name="isSindico" Type="bool" />
+        </EntityType>
+        <EntityType Name="moradores">
+          <Key>
+            <PropertyRef Name="idmoradores" />
+          </Key>
+          <Property Name="idmoradores" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" MaxLength="45" />
+          <Property Name="cpf" Type="varchar" MaxLength="45" />
+          <Property Name="bloco" Type="varchar" MaxLength="45" />
+          <Property Name="numero" Type="varchar" MaxLength="45" />
+          <Property Name="login" Type="varchar" MaxLength="45" />
+          <Property Name="senha" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="recados">
+          <Key>
+            <PropertyRef Name="idrecados" />
+          </Key>
+          <Property Name="idrecados" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Título" Type="varchar" MaxLength="45" />
+          <Property Name="Texto" Type="text" />
+          <Property Name="idcondominios" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_arquivos_has_condominios_arquivos1">
+          <End Role="balancetes" Type="acmesite_conservadoraModel.Store.balancetes" Multiplicity="1" />
+          <End Role="balancete_condominios" Type="acmesite_conservadoraModel.Store.balancete_condominios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balancetes">
+              <PropertyRef Name="idbalancete" />
+            </Principal>
+            <Dependent Role="balancete_condominios">
+              <PropertyRef Name="idbalancete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_arquivos_has_condominios_condominios1">
+          <End Role="condominios" Type="acmesite_conservadoraModel.Store.condominios" Multiplicity="1" />
+          <End Role="balancete_condominios" Type="acmesite_conservadoraModel.Store.balancete_condominios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condominios">
+              <PropertyRef Name="idcondominios" />
+            </Principal>
+            <Dependent Role="balancete_condominios">
+              <PropertyRef Name="idcondominios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Boletos_Moradores1">
+          <End Role="moradores" Type="acmesite_conservadoraModel.Store.moradores" Multiplicity="1" />
+          <End Role="boletos" Type="acmesite_conservadoraModel.Store.boletos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="moradores">
+              <PropertyRef Name="idmoradores" />
+            </Principal>
+            <Dependent Role="boletos">
+              <PropertyRef Name="idmoradores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_condominios_has_inquilinos_condominios1">
+          <End Role="condominios" Type="acmesite_conservadoraModel.Store.condominios" Multiplicity="1" />
+          <End Role="condominios_moradores" Type="acmesite_conservadoraModel.Store.condominios_moradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condominios">
+              <PropertyRef Name="idcondominios" />
+            </Principal>
+            <Dependent Role="condominios_moradores">
+              <PropertyRef Name="idcondominios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_condominios_has_inquilinos_inquilinos1">
+          <End Role="moradores" Type="acmesite_conservadoraModel.Store.moradores" Multiplicity="1" />
+          <End Role="condominios_moradores" Type="acmesite_conservadoraModel.Store.condominios_moradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="moradores">
+              <PropertyRef Name="idmoradores" />
+            </Principal>
+            <Dependent Role="condominios_moradores">
+              <PropertyRef Name="idmoradores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Recados_condominios1">
+          <End Role="condominios" Type="acmesite_conservadoraModel.Store.condominios" Multiplicity="1" />
+          <End Role="recados" Type="acmesite_conservadoraModel.Store.recados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condominios">
+              <PropertyRef Name="idcondominios" />
+            </Principal>
+            <Dependent Role="recados">
+              <PropertyRef Name="idcondominios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="conservadoraModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="conservadoraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="balancetes" EntityType="conservadoraModel.balancete" />
+          <EntitySet Name="boletos" EntityType="conservadoraModel.boleto" />
+          <EntitySet Name="condominios" EntityType="conservadoraModel.condominio" />
+          <EntitySet Name="condominios_moradores" EntityType="conservadoraModel.condominios_moradores" />
+          <EntitySet Name="moradores" EntityType="conservadoraModel.moradores" />
+          <EntitySet Name="recados" EntityType="conservadoraModel.recado" />
+          <AssociationSet Name="fk_Boletos_Moradores1" Association="conservadoraModel.fk_Boletos_Moradores1">
+            <End Role="moradores" EntitySet="moradores" />
+            <End Role="boletos" EntitySet="boletos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_condominios_has_inquilinos_condominios1" Association="conservadoraModel.fk_condominios_has_inquilinos_condominios1">
+            <End Role="condominios" EntitySet="condominios" />
+            <End Role="condominios_moradores" EntitySet="condominios_moradores" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Recados_condominios1" Association="conservadoraModel.fk_Recados_condominios1">
+            <End Role="condominios" EntitySet="condominios" />
+            <End Role="recados" EntitySet="recados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_condominios_has_inquilinos_inquilinos1" Association="conservadoraModel.fk_condominios_has_inquilinos_inquilinos1">
+            <End Role="moradores" EntitySet="moradores" />
+            <End Role="condominios_moradores" EntitySet="condominios_moradores" />
+          </AssociationSet>
+          <AssociationSet Name="balancete_condominios" Association="conservadoraModel.balancete_condominios">
+            <End Role="balancetes" EntitySet="balancetes" />
+            <End Role="condominios" EntitySet="condominios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="balancete">
+          <Key>
+            <PropertyRef Name="idbalancete" />
+          </Key>
+          <Property Name="idbalancete" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoArquivo" Type="String" />
+          <Property Name="nomeArquivo" Type="String" />
+          <Property Name="data" Type="DateTime" />
+          <NavigationProperty Name="condominios" Relationship="conservadoraModel.balancete_condominios" FromRole="balancetes" ToRole="condominios" />
+        </EntityType>
+        <EntityType Name="boleto">
+          <Key>
+            <PropertyRef Name="idboletos" />
+          </Key>
+          <Property Name="idboletos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" />
+          <Property Name="sitiuacao" Type="String" />
+          <Property Name="idmoradores" Type="Int32" Nullable="false" />
+          <Property Name="caminhoArquivo" Type="String" />
+          <NavigationProperty Name="moradore" Relationship="conservadoraModel.fk_Boletos_Moradores1" FromRole="boletos" ToRole="moradores" />
+        </EntityType>
+        <EntityType Name="condominio">
+          <Key>
+            <PropertyRef Name="idcondominios" />
+          </Key>
+          <Property Name="idcondominios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" />
+          <Property Name="endereco" Type="String" />
+          <NavigationProperty Name="condominios_moradores" Relationship="conservadoraModel.fk_condominios_has_inquilinos_condominios1" FromRole="condominios" ToRole="condominios_moradores" />
+          <NavigationProperty Name="recados" Relationship="conservadoraModel.fk_Recados_condominios1" FromRole="condominios" ToRole="recados" />
+          <NavigationProperty Name="balancetes" Relationship="conservadoraModel.balancete_condominios" FromRole="condominios" ToRole="balancetes" />
+        </EntityType>
+        <EntityType Name="condominios_moradores">
+          <Key>
+            <PropertyRef Name="idcondominios" />
+            <PropertyRef Name="idmoradores" />
+          </Key>
+          <Property Name="idcondominios" Type="Int32" Nullable="false" />
+          <Property Name="idmoradores" Type="Int32" Nullable="false" />
+          <Property Name="isSindico" Type="Boolean" />
+          <NavigationProperty Name="condominio" Relationship="conservadoraModel.fk_condominios_has_inquilinos_condominios1" FromRole="condominios_moradores" ToRole="condominios" />
+          <NavigationProperty Name="moradore" Relationship="conservadoraModel.fk_condominios_has_inquilinos_inquilinos1" FromRole="condominios_moradores" ToRole="moradores" />
+        </EntityType>
+        <EntityType Name="moradores">
+          <Key>
+            <PropertyRef Name="idmoradores" />
+          </Key>
+          <Property Name="idmoradores" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" />
+          <Property Name="cpf" Type="String" />
+          <Property Name="bloco" Type="String" />
+          <Property Name="numero" Type="String" />
+          <Property Name="login" Type="String" />
+          <Property Name="senha" Type="String" />
+          <NavigationProperty Name="boletos" Relationship="conservadoraModel.fk_Boletos_Moradores1" FromRole="moradores" ToRole="boletos" />
+          <NavigationProperty Name="condominios_moradores" Relationship="conservadoraModel.fk_condominios_has_inquilinos_inquilinos1" FromRole="moradores" ToRole="condominios_moradores" />
+        </EntityType>
+        <EntityType Name="recado">
+          <Key>
+            <PropertyRef Name="idrecados" />
+          </Key>
+          <Property Name="idrecados" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Título" Type="String" />
+          <Property Name="Texto" Type="String" />
+          <Property Name="idcondominios" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="condominio" Relationship="conservadoraModel.fk_Recados_condominios1" FromRole="recados" ToRole="condominios" />
+        </EntityType>
+        <Association Name="fk_Boletos_Moradores1">
+          <End Role="moradores" Type="conservadoraModel.moradores" Multiplicity="1" />
+          <End Role="boletos" Type="conservadoraModel.boleto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="moradores">
+              <PropertyRef Name="idmoradores" />
+            </Principal>
+            <Dependent Role="boletos">
+              <PropertyRef Name="idmoradores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_condominios_has_inquilinos_condominios1">
+          <End Role="condominios" Type="conservadoraModel.condominio" Multiplicity="1" />
+          <End Role="condominios_moradores" Type="conservadoraModel.condominios_moradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condominios">
+              <PropertyRef Name="idcondominios" />
+            </Principal>
+            <Dependent Role="condominios_moradores">
+              <PropertyRef Name="idcondominios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Recados_condominios1">
+          <End Role="condominios" Type="conservadoraModel.condominio" Multiplicity="1" />
+          <End Role="recados" Type="conservadoraModel.recado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condominios">
+              <PropertyRef Name="idcondominios" />
+            </Principal>
+            <Dependent Role="recados">
+              <PropertyRef Name="idcondominios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_condominios_has_inquilinos_inquilinos1">
+          <End Role="moradores" Type="conservadoraModel.moradores" Multiplicity="1" />
+          <End Role="condominios_moradores" Type="conservadoraModel.condominios_moradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="moradores">
+              <PropertyRef Name="idmoradores" />
+            </Principal>
+            <Dependent Role="condominios_moradores">
+              <PropertyRef Name="idmoradores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="balancete_condominios">
+          <End Role="balancetes" Type="conservadoraModel.balancete" Multiplicity="*" />
+          <End Role="condominios" Type="conservadoraModel.condominio" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="acmesite_conservadoraModelStoreContainer" CdmEntityContainer="conservadoraEntities">
+          <EntitySetMapping Name="balancetes"><EntityTypeMapping TypeName="conservadoraModel.balancete"><MappingFragment StoreEntitySet="balancetes">
+            <ScalarProperty Name="idbalancete" ColumnName="idbalancete" />
+            <ScalarProperty Name="tipoArquivo" ColumnName="tipoArquivo" />
+            <ScalarProperty Name="nomeArquivo" ColumnName="nomeArquivo" />
+            <ScalarProperty Name="data" ColumnName="data" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="boletos"><EntityTypeMapping TypeName="conservadoraModel.boleto"><MappingFragment StoreEntitySet="boletos">
+            <ScalarProperty Name="idboletos" ColumnName="idboletos" />
+            <ScalarProperty Name="data" ColumnName="data" />
+            <ScalarProperty Name="sitiuacao" ColumnName="sitiuacao" />
+            <ScalarProperty Name="idmoradores" ColumnName="idmoradores" />
+            <ScalarProperty Name="caminhoArquivo" ColumnName="caminhoArquivo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="condominios"><EntityTypeMapping TypeName="conservadoraModel.condominio"><MappingFragment StoreEntitySet="condominios">
+            <ScalarProperty Name="idcondominios" ColumnName="idcondominios" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="endereco" ColumnName="endereco" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="condominios_moradores"><EntityTypeMapping TypeName="conservadoraModel.condominios_moradores"><MappingFragment StoreEntitySet="condominios_moradores">
+            <ScalarProperty Name="idcondominios" ColumnName="idcondominios" />
+            <ScalarProperty Name="idmoradores" ColumnName="idmoradores" />
+            <ScalarProperty Name="isSindico" ColumnName="isSindico" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="moradores"><EntityTypeMapping TypeName="conservadoraModel.moradores"><MappingFragment StoreEntitySet="moradores">
+            <ScalarProperty Name="idmoradores" ColumnName="idmoradores" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="cpf" ColumnName="cpf" />
+            <ScalarProperty Name="bloco" ColumnName="bloco" />
+            <ScalarProperty Name="numero" ColumnName="numero" />
+            <ScalarProperty Name="login" ColumnName="login" />
+            <ScalarProperty Name="senha" ColumnName="senha" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="recados"><EntityTypeMapping TypeName="conservadoraModel.recado"><MappingFragment StoreEntitySet="recados">
+            <ScalarProperty Name="idrecados" ColumnName="idrecados" />
+            <ScalarProperty Name="Título" ColumnName="Título" />
+            <ScalarProperty Name="Texto" ColumnName="Texto" />
+            <ScalarProperty Name="idcondominios" ColumnName="idcondominios" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="balancete_condominios" TypeName="conservadoraModel.balancete_condominios" StoreEntitySet="balancete_condominios">
+            <EndProperty Name="balancetes">
+              <ScalarProperty Name="idbalancete" ColumnName="idbalancete" />
+            </EndProperty>
+            <EndProperty Name="condominios">
+              <ScalarProperty Name="idcondominios" ColumnName="idcondominios" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ModeloMysql">
+        <EntityTypeShape EntityType="conservadoraModel.balancete" Width="1.5" PointX="0.75" PointY="4.125" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="conservadoraModel.boleto" Width="1.5" PointX="5.25" PointY="9.625" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="conservadoraModel.condominio" Width="1.5" PointX="3" PointY="4" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="conservadoraModel.condominios_moradores" Width="1.5" PointX="5.25" PointY="4.125" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="conservadoraModel.moradores" Width="1.5" PointX="3" PointY="0.75" Height="2.4140429687499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="conservadoraModel.recado" Width="1.5" PointX="5.25" PointY="6.625" Height="1.7566536458333317" IsExpanded="true" />
+        <AssociationConnector Association="conservadoraModel.fk_Boletos_Moradores1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.1640429687499996" />
+          <ConnectorPoint PointX="4.875" PointY="3.5390429687499996" />
+          <ConnectorPoint PointX="4.875" PointY="10.58550048828125" />
+          <ConnectorPoint PointX="5.25" PointY="10.58550048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="conservadoraModel.fk_condominios_has_inquilinos_condominios1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.0033268229166667" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="5.0033268229166659" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="5.0033268229166667" />
+          <ConnectorPoint PointX="5.25" PointY="5.0033268229166667" />
+        </AssociationConnector>
+        <AssociationConnector Association="conservadoraModel.fk_Recados_condominios1" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="5.9210009765625" />
+          <ConnectorPoint PointX="3.75" PointY="7.5033268229166659" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="7.503326822916665" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="7.5033268229166659" />
+          <ConnectorPoint PointX="5.25" PointY="7.5033268229166659" />
+        </AssociationConnector>
+        <AssociationConnector Association="conservadoraModel.fk_condominios_has_inquilinos_inquilinos1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.925768984374999" />
+          <ConnectorPoint PointX="6" PointY="1.925768984374999" />
+          <ConnectorPoint PointX="6" PointY="4.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="conservadoraModel.balancete_condominios" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.0033268229166667" />
+          <ConnectorPoint PointX="3" PointY="5.0033268229166667" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
