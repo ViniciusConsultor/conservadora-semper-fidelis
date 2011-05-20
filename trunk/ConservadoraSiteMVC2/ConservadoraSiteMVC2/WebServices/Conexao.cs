@@ -8,6 +8,7 @@ namespace ConservadoraSiteMVC2.WebServices
     public class Conexao
     {
         public static string SenhaAcesso = "123abc789123";
+        
         private Conexao()
         { 
         

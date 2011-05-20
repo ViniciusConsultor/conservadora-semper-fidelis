@@ -57,7 +57,7 @@ namespace ConservadoraSiteMVC2.WebServices
                 arquivo.Read(resultado, 0, resultado.Length);
                 arquivo.Close();
             }
-            catch (Exception e)
+            catch 
             {
                 return null;
             }
