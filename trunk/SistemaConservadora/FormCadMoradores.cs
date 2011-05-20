@@ -11,8 +11,8 @@ namespace SistemaConservadora
 {    
     public partial class FormCadMoradores : FormCadastro
     {
-        private static MoradoresWeb.MoradoresWebSoapClient moradoresWeb = new MoradoresWeb.MoradoresWebSoapClient("MoradoresWebSoap", "http://localhost:1186/WebServices/MoradoresWeb.asmx");
-        private static CondominioWeb.CondominioWebSoapClient condominioWeb = new CondominioWeb.CondominioWebSoapClient("CondominioWebSoap", "http://localhost:1186/WebServices/CondominioWeb.asmx");
+        private static MoradoresWeb.MoradoresWebSoapClient moradoresWeb = new MoradoresWeb.MoradoresWebSoapClient("MoradoresWebSoap", Funcoes.Servidor + "MoradoresWeb.asmx");
+        private static CondominioWeb.CondominioWebSoapClient condominioWeb = new CondominioWeb.CondominioWebSoapClient("CondominioWebSoap", Funcoes.Servidor + "CondominioWeb.asmx");
         
         private List<MoradoresWeb.condominio> condominioLista;
        

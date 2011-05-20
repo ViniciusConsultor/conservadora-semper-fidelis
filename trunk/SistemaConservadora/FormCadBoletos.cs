@@ -10,8 +10,8 @@ namespace SistemaConservadora
 {
     public partial class FormCadBoletos : SistemaConservadora.FormCadastro
     {
-         private static BoletosWeb.BoletosWebSoapClient boletosWeb = new BoletosWeb.BoletosWebSoapClient("BoletosWebSoap", "http://localhost:1186/WebServices/BoletosWeb.asmx");
-         private static MoradoresWeb.MoradoresWebSoapClient moradoresWeb = new MoradoresWeb.MoradoresWebSoapClient("MoradoresWebSoap", "http://localhost:1186/WebServices/MoradoresWeb.asmx");
+         private static BoletosWeb.BoletosWebSoapClient boletosWeb = new BoletosWeb.BoletosWebSoapClient("BoletosWebSoap", Funcoes.Servidor + "BoletosWeb.asmx");
+         private static MoradoresWeb.MoradoresWebSoapClient moradoresWeb = new MoradoresWeb.MoradoresWebSoapClient("MoradoresWebSoap", Funcoes.Servidor + "MoradoresWeb.asmx");
          private string nomeArquivo;
         public FormCadBoletos()
             : base()

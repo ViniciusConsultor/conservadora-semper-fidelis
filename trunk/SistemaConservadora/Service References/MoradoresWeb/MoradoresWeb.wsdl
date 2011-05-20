@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RetornaLista">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaListaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornaListaResult" type="tns:ArrayOfMoradores" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMoradores">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="moradores" nillable="true" type="tns:moradores" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="moradores">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="idmoradores" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cpf" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="bloco" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityObject" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StructuralObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StructuralObject" abstract="true" />
+      <s:complexType name="EntityKey">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EntitySetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityContainerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityKeyValues" type="tns:ArrayOfEntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityKeyMember" nillable="true" type="tns:EntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RetornaItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornaItemResult" type="tns:moradores" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Retornacondominios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCondominio">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="condominio" nillable="true" type="tns:condominio" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="condominio">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="idcondominios" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="endereco" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="RetornacondominiosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornacondominiosResult" type="tns:ArrayOfCondominio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaCondominio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaCondominioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornaCondominioResult" type="tns:condominio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaMorador">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="morador" type="tns:moradores" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaMoradorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SalvaMoradorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Salvacondominios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="condominios" type="tns:ArrayOfCondominio" />
+            <s:element minOccurs="1" maxOccurs="1" name="moradorid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvacondominiosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SalvacondominiosResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionaMorador">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="morador" type="tns:moradores" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionaMoradorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdicionaMoradorResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Apagar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApagarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ApagarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RetornaListaSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaLista" />
+  </wsdl:message>
+  <wsdl:message name="RetornaListaSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaListaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornaItemSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaItem" />
+  </wsdl:message>
+  <wsdl:message name="RetornaItemSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornacondominiosSoapIn">
+    <wsdl:part name="parameters" element="tns:Retornacondominios" />
+  </wsdl:message>
+  <wsdl:message name="RetornacondominiosSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornacondominiosResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornaCondominioSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaCondominio" />
+  </wsdl:message>
+  <wsdl:message name="RetornaCondominioSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaCondominioResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalvaMoradorSoapIn">
+    <wsdl:part name="parameters" element="tns:SalvaMorador" />
+  </wsdl:message>
+  <wsdl:message name="SalvaMoradorSoapOut">
+    <wsdl:part name="parameters" element="tns:SalvaMoradorResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalvacondominiosSoapIn">
+    <wsdl:part name="parameters" element="tns:Salvacondominios" />
+  </wsdl:message>
+  <wsdl:message name="SalvacondominiosSoapOut">
+    <wsdl:part name="parameters" element="tns:SalvacondominiosResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdicionaMoradorSoapIn">
+    <wsdl:part name="parameters" element="tns:AdicionaMorador" />
+  </wsdl:message>
+  <wsdl:message name="AdicionaMoradorSoapOut">
+    <wsdl:part name="parameters" element="tns:AdicionaMoradorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApagarSoapIn">
+    <wsdl:part name="parameters" element="tns:Apagar" />
+  </wsdl:message>
+  <wsdl:message name="ApagarSoapOut">
+    <wsdl:part name="parameters" element="tns:ApagarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MoradoresWebSoap">
+    <wsdl:operation name="RetornaLista">
+      <wsdl:input message="tns:RetornaListaSoapIn" />
+      <wsdl:output message="tns:RetornaListaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaItem">
+      <wsdl:input message="tns:RetornaItemSoapIn" />
+      <wsdl:output message="tns:RetornaItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Retornacondominios">
+      <wsdl:input message="tns:RetornacondominiosSoapIn" />
+      <wsdl:output message="tns:RetornacondominiosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaCondominio">
+      <wsdl:input message="tns:RetornaCondominioSoapIn" />
+      <wsdl:output message="tns:RetornaCondominioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SalvaMorador">
+      <wsdl:input message="tns:SalvaMoradorSoapIn" />
+      <wsdl:output message="tns:SalvaMoradorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Salvacondominios">
+      <wsdl:input message="tns:SalvacondominiosSoapIn" />
+      <wsdl:output message="tns:SalvacondominiosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdicionaMorador">
+      <wsdl:input message="tns:AdicionaMoradorSoapIn" />
+      <wsdl:output message="tns:AdicionaMoradorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Apagar">
+      <wsdl:input message="tns:ApagarSoapIn" />
+      <wsdl:output message="tns:ApagarSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MoradoresWebSoap" type="tns:MoradoresWebSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RetornaLista">
+      <soap:operation soapAction="http://tempuri.org/RetornaLista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaItem">
+      <soap:operation soapAction="http://tempuri.org/RetornaItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Retornacondominios">
+      <soap:operation soapAction="http://tempuri.org/Retornacondominios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaCondominio">
+      <soap:operation soapAction="http://tempuri.org/RetornaCondominio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvaMorador">
+      <soap:operation soapAction="http://tempuri.org/SalvaMorador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Salvacondominios">
+      <soap:operation soapAction="http://tempuri.org/Salvacondominios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionaMorador">
+      <soap:operation soapAction="http://tempuri.org/AdicionaMorador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Apagar">
+      <soap:operation soapAction="http://tempuri.org/Apagar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MoradoresWebSoap12" type="tns:MoradoresWebSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RetornaLista">
+      <soap12:operation soapAction="http://tempuri.org/RetornaLista" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaItem">
+      <soap12:operation soapAction="http://tempuri.org/RetornaItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Retornacondominios">
+      <soap12:operation soapAction="http://tempuri.org/Retornacondominios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaCondominio">
+      <soap12:operation soapAction="http://tempuri.org/RetornaCondominio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvaMorador">
+      <soap12:operation soapAction="http://tempuri.org/SalvaMorador" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Salvacondominios">
+      <soap12:operation soapAction="http://tempuri.org/Salvacondominios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionaMorador">
+      <soap12:operation soapAction="http://tempuri.org/AdicionaMorador" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Apagar">
+      <soap12:operation soapAction="http://tempuri.org/Apagar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MoradoresWeb">
+    <wsdl:port name="MoradoresWebSoap" binding="tns:MoradoresWebSoap">
+      <soap:address location="http://localhost:1186/WebServices/MoradoresWeb.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MoradoresWebSoap12" binding="tns:MoradoresWebSoap12">
+      <soap12:address location="http://localhost:1186/WebServices/MoradoresWeb.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
