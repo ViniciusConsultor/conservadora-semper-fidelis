@@ -12,7 +12,7 @@ namespace SistemaConservadora
     public partial class FormLogin : Form
     {
         public bool   login;
-        private static ConexaoWS.ConexaoWSSoapClient conexaoWS = new ConexaoWS.ConexaoWSSoapClient("ConexaoWSSoap", "http://localhost:1186/WebServices/ConexaoWS.asmx");
+        private static ConexaoWS.ConexaoWSSoapClient conexaoWS = new ConexaoWS.ConexaoWSSoapClient("ConexaoWSSoap", Funcoes.Servidor + "ConexaoWS.asmx");
         public FormLogin()
         {
             InitializeComponent();

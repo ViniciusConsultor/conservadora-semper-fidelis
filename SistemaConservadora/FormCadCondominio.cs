@@ -11,7 +11,7 @@ namespace SistemaConservadora
 {
     public partial class FormCadCondominio : FormCadastro
     {
-        private static CondominioWeb.CondominioWebSoapClient condominioWeb = new CondominioWeb.CondominioWebSoapClient("CondominioWebSoap", "http://localhost:1186/WebServices/CondominioWeb.asmx");
+        private static CondominioWeb.CondominioWebSoapClient condominioWeb = new CondominioWeb.CondominioWebSoapClient("CondominioWebSoap", Funcoes.Servidor + "CondominioWeb.asmx");
 
         public FormCadCondominio() : base()
         {

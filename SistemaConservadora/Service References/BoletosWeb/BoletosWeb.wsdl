@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SalvaArquivo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dadosDoArquivo" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="nomeArquivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaArquivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SalvaArquivoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="teste">
+        <s:complexType />
+      </s:element>
+      <s:element name="testeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testeResult" type="tns:moradores" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="moradores">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="idmoradores" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cpf" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="bloco" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityObject" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StructuralObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StructuralObject" abstract="true" />
+      <s:complexType name="EntityKey">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EntitySetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityContainerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityKeyValues" type="tns:ArrayOfEntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityKeyMember" nillable="true" type="tns:EntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DownloadBytes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nomeArquivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadBytesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadBytesResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="existeArquivo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nomeArquivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="existeArquivoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="existeArquivoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaLista">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RelatedEnd" abstract="true" />
+      <s:complexType name="EntityReference" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RelatedEnd">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfmoradores">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfBoleto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="boleto" nillable="true" type="tns:boleto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="boleto">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="idboletos" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="data" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="sitiuacao" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="idmoradores" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="caminhoArquivo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="moradoreReference" type="tns:EntityReferenceOfmoradores" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="RetornaListaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornaListaResult" type="tns:ArrayOfBoleto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornaItemResult" type="tns:boleto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaBoleto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="boletop" type="tns:boleto" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaBoletoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SalvaBoletoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionaBoleto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="boletop" type="tns:boleto" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionaBoletoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdicionaBoletoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Apagar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApagarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ApagarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SalvaArquivoSoapIn">
+    <wsdl:part name="parameters" element="tns:SalvaArquivo" />
+  </wsdl:message>
+  <wsdl:message name="SalvaArquivoSoapOut">
+    <wsdl:part name="parameters" element="tns:SalvaArquivoResponse" />
+  </wsdl:message>
+  <wsdl:message name="testeSoapIn">
+    <wsdl:part name="parameters" element="tns:teste" />
+  </wsdl:message>
+  <wsdl:message name="testeSoapOut">
+    <wsdl:part name="parameters" element="tns:testeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBytesSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadBytes" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBytesSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadBytesResponse" />
+  </wsdl:message>
+  <wsdl:message name="existeArquivoSoapIn">
+    <wsdl:part name="parameters" element="tns:existeArquivo" />
+  </wsdl:message>
+  <wsdl:message name="existeArquivoSoapOut">
+    <wsdl:part name="parameters" element="tns:existeArquivoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornaListaSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaLista" />
+  </wsdl:message>
+  <wsdl:message name="RetornaListaSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaListaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornaItemSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaItem" />
+  </wsdl:message>
+  <wsdl:message name="RetornaItemSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalvaBoletoSoapIn">
+    <wsdl:part name="parameters" element="tns:SalvaBoleto" />
+  </wsdl:message>
+  <wsdl:message name="SalvaBoletoSoapOut">
+    <wsdl:part name="parameters" element="tns:SalvaBoletoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdicionaBoletoSoapIn">
+    <wsdl:part name="parameters" element="tns:AdicionaBoleto" />
+  </wsdl:message>
+  <wsdl:message name="AdicionaBoletoSoapOut">
+    <wsdl:part name="parameters" element="tns:AdicionaBoletoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApagarSoapIn">
+    <wsdl:part name="parameters" element="tns:Apagar" />
+  </wsdl:message>
+  <wsdl:message name="ApagarSoapOut">
+    <wsdl:part name="parameters" element="tns:ApagarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BoletosWebSoap">
+    <wsdl:operation name="SalvaArquivo">
+      <wsdl:input message="tns:SalvaArquivoSoapIn" />
+      <wsdl:output message="tns:SalvaArquivoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="teste">
+      <wsdl:input message="tns:testeSoapIn" />
+      <wsdl:output message="tns:testeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBytes">
+      <wsdl:input message="tns:DownloadBytesSoapIn" />
+      <wsdl:output message="tns:DownloadBytesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="existeArquivo">
+      <wsdl:input message="tns:existeArquivoSoapIn" />
+      <wsdl:output message="tns:existeArquivoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaLista">
+      <wsdl:input message="tns:RetornaListaSoapIn" />
+      <wsdl:output message="tns:RetornaListaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaItem">
+      <wsdl:input message="tns:RetornaItemSoapIn" />
+      <wsdl:output message="tns:RetornaItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SalvaBoleto">
+      <wsdl:input message="tns:SalvaBoletoSoapIn" />
+      <wsdl:output message="tns:SalvaBoletoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdicionaBoleto">
+      <wsdl:input message="tns:AdicionaBoletoSoapIn" />
+      <wsdl:output message="tns:AdicionaBoletoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Apagar">
+      <wsdl:input message="tns:ApagarSoapIn" />
+      <wsdl:output message="tns:ApagarSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BoletosWebSoap" type="tns:BoletosWebSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SalvaArquivo">
+      <soap:operation soapAction="http://tempuri.org/SalvaArquivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="teste">
+      <soap:operation soapAction="http://tempuri.org/teste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBytes">
+      <soap:operation soapAction="http://tempuri.org/DownloadBytes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="existeArquivo">
+      <soap:operation soapAction="http://tempuri.org/existeArquivo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaLista">
+      <soap:operation soapAction="http://tempuri.org/RetornaLista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaItem">
+      <soap:operation soapAction="http://tempuri.org/RetornaItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvaBoleto">
+      <soap:operation soapAction="http://tempuri.org/SalvaBoleto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionaBoleto">
+      <soap:operation soapAction="http://tempuri.org/AdicionaBoleto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Apagar">
+      <soap:operation soapAction="http://tempuri.org/Apagar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BoletosWebSoap12" type="tns:BoletosWebSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SalvaArquivo">
+      <soap12:operation soapAction="http://tempuri.org/SalvaArquivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="teste">
+      <soap12:operation soapAction="http://tempuri.org/teste" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBytes">
+      <soap12:operation soapAction="http://tempuri.org/DownloadBytes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="existeArquivo">
+      <soap12:operation soapAction="http://tempuri.org/existeArquivo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaLista">
+      <soap12:operation soapAction="http://tempuri.org/RetornaLista" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaItem">
+      <soap12:operation soapAction="http://tempuri.org/RetornaItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvaBoleto">
+      <soap12:operation soapAction="http://tempuri.org/SalvaBoleto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionaBoleto">
+      <soap12:operation soapAction="http://tempuri.org/AdicionaBoleto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Apagar">
+      <soap12:operation soapAction="http://tempuri.org/Apagar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BoletosWeb">
+    <wsdl:port name="BoletosWebSoap" binding="tns:BoletosWebSoap">
+      <soap:address location="http://localhost:1186/WebServices/BoletosWeb.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BoletosWebSoap12" binding="tns:BoletosWebSoap12">
+      <soap12:address location="http://localhost:1186/WebServices/BoletosWeb.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
