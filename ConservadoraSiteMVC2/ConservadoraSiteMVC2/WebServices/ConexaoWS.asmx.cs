@@ -22,5 +22,11 @@ namespace ConservadoraSiteMVC2.WebServices
         {
             Conexao.getInstance();
         }
+
+        [WebMethod]
+        public string teste()
+        {
+            return "oi, teste!";
+        }
     }
 }
