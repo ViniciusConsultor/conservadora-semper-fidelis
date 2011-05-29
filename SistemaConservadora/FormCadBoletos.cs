@@ -17,42 +17,27 @@ namespace SistemaConservadora
             : base()
         {
             InitializeComponent();
-            TabelaData.DataSource = boletosWeb.RetornaLista(Funcoes.Acesso);
-            TabelaData.Columns[TabelaData.Columns.Count - 1].Visible = false;
+      
             cmbMorador.DataSource = moradoresWeb.RetornaLista(Funcoes.Acesso);
             cmbMorador.DisplayMember = "nome";
             cmbMorador.ValueMember = "idmoradores";
+            BindGrid();
         }
 
         public override void ClearFields()
         {
-            lblIdentificacao.Text = "";
-            cmbMorador.Text = "";
-            txtArquivo.Text = "";
-            dtReferenteA.Value = DateTime.Now;
-            lblDownload.Enabled = false;
+            (BDS.Current as BoletosWeb.boleto).data = dtReferenteA.Value;
         }
        
         public override void Populate()
         {
-            BoletosWeb.boleto boletos = boletosWeb.RetornaItem(Convert.ToInt32(TabelaData.SelectedRows[0].Cells[0].Value),Funcoes.Acesso);
-            lblIdentificacao.Text = boletos.idboletos.ToString();
-            lblCaminhoArquivo.Text = boletos.caminhoArquivo;
-            lblDownload.Enabled = true;
-            cmbMorador.SelectedValue = boletos.idmoradores;
-            dtReferenteA.Value = Convert.ToDateTime(boletos.data);
-            cmbSituacao.Text = boletos.sitiuacao;
+          
         }
         
         public override void Atualizar(int id)
         {
-            BoletosWeb.boleto boletos = new BoletosWeb.boleto();
-          
-            boletos.idboletos = Convert.ToInt32(lblIdentificacao.Text);
-            boletos.caminhoArquivo = txtArquivo.Text == null ? lblCaminhoArquivo.Text : txtArquivo.Text;
-            boletos.idmoradores = Convert.ToInt32(cmbMorador.SelectedValue);
-            boletos.data = dtReferenteA.Value;
-            boletos.sitiuacao = cmbSituacao.Text;
+            BoletosWeb.boleto boletos = (BoletosWeb.boleto)BDS.Current;          
+           
 
             if(boletosWeb.SalvaBoleto(boletos,Funcoes.Acesso))
             {
@@ -67,19 +52,14 @@ namespace SistemaConservadora
 
         protected override void Paginas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TabelaData.DataSource = boletosWeb.RetornaLista(Funcoes.Acesso);
+         
             base.Paginas_SelectedIndexChanged(sender, e);
         }
 
         public override void Adicionar()
         {
-            BoletosWeb.boleto boletos = new BoletosWeb.boleto();
-                 
-            boletos.caminhoArquivo = this.nomeArquivo;
-            boletos.idmoradores = Convert.ToInt32(cmbMorador.SelectedValue);
-            boletos.data = dtReferenteA.Value;
-            boletos.sitiuacao = cmbSituacao.Text;
-
+            BoletosWeb.boleto boletos = (BoletosWeb.boleto)BDS.Current;
+       
             if (boletosWeb.AdicionaBoleto(boletos,Funcoes.Acesso))
             {
                 MessageBox.Show("Adicionado com sucesso!");
@@ -93,10 +73,12 @@ namespace SistemaConservadora
 
         public override void Excluir(int id)
         {
+            id = (BDS.Current as BoletosWeb.boleto).idboletos;
+
             if (boletosWeb.Apagar(id,Funcoes.Acesso))
             {
                 MessageBox.Show("Excluido com sucesso!");
-                TabelaData.DataSource = boletosWeb.RetornaLista(Funcoes.Acesso);
+         
                 base.Excluir(id);
             }
             else
@@ -123,13 +105,13 @@ namespace SistemaConservadora
 
             arquivo.Close();
             txtArquivo.Text = "";
-            lblCaminhoArquivo.Text = this.nomeArquivo;
+            (BDS.Current as BoletosWeb.boleto).caminhoArquivo = this.nomeArquivo;
             lblDownload.Enabled = true;           
         }
 
         private void lblDownload_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            byte[] dadosArquivo = boletosWeb.DownloadBytes(this.nomeArquivo, Funcoes.Acesso);
+            byte[] dadosArquivo = boletosWeb.DownloadBytes((BDS.Current as BoletosWeb.boleto).caminhoArquivo, Funcoes.Acesso);
             SalvarArquivo.ShowDialog();
             if (SalvarArquivo.FileName != "")
             {
@@ -138,6 +120,19 @@ namespace SistemaConservadora
                 stream.Flush();
                 stream.Close();
             }
+        }
+
+        private void cmbSituacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public override void BindGrid()
+        {
+            BDS.Clear();
+            foreach (BoletosWeb.boleto boleto in boletosWeb.RetornaLista(Funcoes.Acesso))
+                BDS.Add(boleto);
+            TabelaData.DataSource = BDS;
         }
     }
 }

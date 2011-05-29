@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1d93d366-a487-4d3e-937c-2f06dc0c81e6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1e1d3a93-df27-4b40-85af-22cd21870b92" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:1186/WebServices/RecadosWeb.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:1186/WebServices/BalancetesWeb.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RecadosWeb.wsdl" MetadataType="Wsdl" ID="d446e713-e404-449d-862a-f4fcc14d0497" SourceId="1" SourceUrl="http://localhost:1186/WebServices/RecadosWeb.asmx?wsdl" />
-    <MetadataFile FileName="RecadosWeb.disco" MetadataType="Disco" ID="d1eb0a69-067d-4f08-aa20-baaae6ac6094" SourceId="1" SourceUrl="http://localhost:1186/WebServices/RecadosWeb.asmx?disco" />
+    <MetadataFile FileName="BalancetesWeb.wsdl" MetadataType="Wsdl" ID="8f4ff76c-e0fe-49ac-aed8-ad4e06cf0388" SourceId="1" SourceUrl="http://localhost:1186/WebServices/BalancetesWeb.asmx?wsdl" />
+    <MetadataFile FileName="BalancetesWeb.disco" MetadataType="Disco" ID="fb934145-86ea-4e7e-98c1-4aaf5234c251" SourceId="1" SourceUrl="http://localhost:1186/WebServices/BalancetesWeb.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -17,10 +17,9 @@ namespace SistemaConservadora
         public FormCadastro()
         {
             InitializeComponent();
-            Paginas.SelectTab(0);
+            Paginas.SelectedTabPage = TabAcesso;
             State = Estado.Closed;
-            Paginas_SelectedIndexChanged(null, new EventArgs());
-
+            Paginas_SelectedIndexChanged(null, new EventArgs());     
         }
 
         public virtual void ClearFields(){}
@@ -28,45 +27,110 @@ namespace SistemaConservadora
 
         public virtual void Excluir(int id)
         {
-            Paginas.SelectTab(0);
+            Paginas.SelectedTabPage = TabAcesso;
         }
 
         public virtual void Adicionar()
         {
-            Paginas.SelectTab(0);
+            Paginas.SelectedTabPage = TabAcesso;
         }
 
         public virtual void Atualizar(int id)
         {
-            Paginas.SelectTab(0);
+            Paginas.SelectedTabPage = TabAcesso;
         }
         
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            BDS.AddNew();
             ClearFields();
-            Paginas.SelectTab(1);
+            Paginas.SelectedTabPage = TabManutencao;
             State = Estado.Adicionar;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Populate();
-            Paginas.SelectTab(1);
+            Paginas.SelectedTabPage = TabManutencao;
             State = Estado.Editar;
         }
 
         protected virtual void Paginas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Paginas.SelectedIndex == 0)
+            
+        }
+
+        private void btnApagar_Click(object sender, EventArgs e)
+        {
+            Excluir(0);
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            BDS.MovePrevious();          
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            if (State == Estado.Adicionar)
+            {
+                Adicionar();
+                BindGrid();
+            }
+            else {
+                Atualizar(0);
+                BindGrid();
+            }
+        }
+
+        private void btnProximo_Click(object sender, EventArgs e)
+        {
+            BDS.MoveNext();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            State = Estado.Closed;
+            BDS.CancelEdit();
+            Paginas.SelectedTabPage = TabAcesso;
+        }
+
+        private void TabelaData_CellDoubleClick(object sender, EventArgs e)
+        {
+            btnEditar_Click(sender, e);
+        }
+
+        private void txtPesquisar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void FormCadastro_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCadastro_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        public virtual void BindGrid()
+        { 
+        
+        }
+
+        private void Paginas_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (Paginas.SelectedTabPage == TabAcesso)
             {
                 btnAdicionar.Enabled = true;
                 btnEditar.Enabled = true;
                 btnApagar.Enabled = true;
                 btnAnterior.Enabled = false;
                 btnProximo.Enabled = false;
-                btnPesquisar.Enabled = true;
-                txtPesquisar.Enabled = true;
+            ;
                 btnGravar.Enabled = false;
                 btnCancelar.Enabled = false;
             }
@@ -78,63 +142,32 @@ namespace SistemaConservadora
                 btnApagar.Enabled = true;
                 btnAnterior.Enabled = true;
                 btnProximo.Enabled = true;
-                btnPesquisar.Enabled = false;
-                txtPesquisar.Enabled = false;
+           
                 btnGravar.Enabled = true;
                 btnCancelar.Enabled = true;
-            
+
             }
         }
 
-        private void btnApagar_Click(object sender, EventArgs e)
+        private void FormCadastro_ControlAdded(object sender, ControlEventArgs e)
         {
-            Excluir(Convert.ToInt32(Convert.ToInt32(TabelaData.SelectedRows[0].Cells[0].Value)));
+           
         }
 
-        private void btnAnterior_Click(object sender, EventArgs e)
+        private void TabManutencao_ControlAdded(object sender, ControlEventArgs e)
         {
-
-            if (TabelaData.SelectedRows[0].Index > 0)
-            {
-                TabelaData.Rows[TabelaData.SelectedRows[0].Index - 1].Selected = true;
-                btnEditar_Click(sender, e);
-            }
-
+           
         }
 
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            if (State == Estado.Adicionar)
-                Adicionar();
-            else
-                Atualizar(Convert.ToInt32(Convert.ToInt32(TabelaData.SelectedRows[0].Cells[0].Value)));
-        }
-
-        private void btnProximo_Click(object sender, EventArgs e)
-        {
-            if (TabelaData.Rows.Count - 1 > TabelaData.SelectedRows[0].Index)
-            {
-                TabelaData.Rows[TabelaData.SelectedRows[0].Index + 1].Selected = true;
-                btnEditar_Click(sender, e);
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            State = Estado.Closed;
-            ClearFields();
-            Paginas.SelectTab(0);
-        }
-
-        private void TabelaData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnEditar_Click(sender, e);
-        }
-
-        private void txtPesquisar_Click(object sender, EventArgs e)
+        private void Paginas_ControlAdded(object sender, ControlEventArgs e)
         {
             
         }
-        
+
+        private void TabAcesso_ControlAdded(object sender, ControlEventArgs e)
+        {
+            if (e.Control is DevExpress.XtraGrid.GridControl)
+                (e.Control as DevExpress.XtraGrid.GridControl).DoubleClick += this.TabelaData_CellDoubleClick;
+        }       
     }
 }

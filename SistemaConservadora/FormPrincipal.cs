@@ -46,11 +46,37 @@ namespace SistemaConservadora
 
         private void button3_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormCadBoletos cad = new FormCadBoletos();
+            cad.ShowDialog();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.btnCondominio_Click(sender, null);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.btnMoradores_Click(sender, null);
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
             FormCadRecados cad = new FormCadRecados();
             cad.ShowDialog();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FormCadBoletos cad = new FormCadBoletos();
             cad.ShowDialog();

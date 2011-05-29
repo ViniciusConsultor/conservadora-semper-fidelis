@@ -18,39 +18,26 @@ namespace SistemaConservadora
             : base()
         {
             InitializeComponent();
-            TabelaData.DataSource = recadosWeb.RetornaLista(Funcoes.Acesso);
-            TabelaData.Columns[TabelaData.Columns.Count - 1].Visible = false;
+     
             cmbCondominio.DataSource = condominioWeb.RetornaLista(Funcoes.Acesso);
             cmbCondominio.DisplayMember = "nome";
             cmbCondominio.ValueMember = "idcondominios";
+            BindGrid();
         }
 
         public override void ClearFields()
         {
-            lblIdentificacao.Text = "";
-            txtTitulo.Text = "";
-            rchTexto.Text = "";
-            cmbCondominio.Text = "";
+           
         }
        
         public override void Populate()
         {
-            RecadosWeb.recado recados = recadosWeb.RetornaItem(Convert.ToInt32(TabelaData.SelectedRows[0].Cells[0].Value),Funcoes.Acesso);
-            lblIdentificacao.Text = recados.idrecados.ToString();
-            txtTitulo.Text = recados.Título;
-            rchTexto.Text = recados.Texto;
-            cmbCondominio.SelectedValue = recados.idcondominios;
-           
+             
         }
         
         public override void Atualizar(int id)
         {
-            RecadosWeb.recado recados = new RecadosWeb.recado();
-          
-            recados.idrecados = Convert.ToInt32(lblIdentificacao.Text);
-            recados.Título = txtTitulo.Text;
-            recados.Texto = rchTexto.Text;
-            recados.idcondominios = Convert.ToInt32(cmbCondominio.SelectedValue);
+            RecadosWeb.recado recados = (RecadosWeb.recado)BDS.Current;                    
 
             if(recadosWeb.SalvaRecado(recados,Funcoes.Acesso))
             {
@@ -65,18 +52,14 @@ namespace SistemaConservadora
 
         protected override void Paginas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TabelaData.DataSource = recadosWeb.RetornaLista(Funcoes.Acesso);
+            
             base.Paginas_SelectedIndexChanged(sender, e);
         }
 
         public override void Adicionar()
         {
-            RecadosWeb.recado recados = new RecadosWeb.recado();
-            
-            recados.Título = txtTitulo.Text;
-            recados.Texto = rchTexto.Text;
-            recados.idcondominios = Convert.ToInt32(cmbCondominio.SelectedValue);
-
+            RecadosWeb.recado recados = (RecadosWeb.recado)BDS.Current;
+          
             if (recadosWeb.AdicionaRecado(recados,Funcoes.Acesso))
             {
                 MessageBox.Show("Adicionado com sucesso!");
@@ -90,10 +73,11 @@ namespace SistemaConservadora
 
         public override void Excluir(int id)
         {
+            id = (BDS.Current as RecadosWeb.recado).idrecados;
             if (recadosWeb.Apagar(id,Funcoes.Acesso))
             {
                 MessageBox.Show("Excluido com sucesso!");
-                TabelaData.DataSource = recadosWeb.RetornaLista(Funcoes.Acesso);
+             
                 base.Excluir(id);
             }
             else
@@ -101,6 +85,12 @@ namespace SistemaConservadora
                 MessageBox.Show("Falha ao excluir!");
             }
         }
-        
+        public override void BindGrid()
+        {
+            BDS.Clear();
+            foreach (RecadosWeb.recado recado in recadosWeb.RetornaLista(Funcoes.Acesso))
+                BDS.Add(recado);
+            TabelaData.DataSource = BDS;
+        }
      }
 }

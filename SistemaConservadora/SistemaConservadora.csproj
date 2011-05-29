@@ -57,12 +57,49 @@
     <ApplicationIcon>Line Chart.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataGridViewAutoFilter">
+      <HintPath>..\..\..\..\..\Downloads\DataGridViewAutoFilter\DataGridViewAutoFilter\CS\DataGridViewAutoFilter\DataGridViewAutoFilter\bin\Debug\DataGridViewAutoFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DXCore.Controls.Data.v6.3, Version=10.2.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
+    <Reference Include="DevExpress.DXCore.Controls.Utils.v6.3, Version=10.2.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
+    <Reference Include="DevExpress.DXCore.Controls.XtraBars.v6.3, Version=10.2.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DXCore.Controls.XtraEditors.v6.3, Version=10.2.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
+    <Reference Include="DevExpress.DXCore.Controls.XtraGrid.v6.3, Version=10.2.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DXCore.Controls.XtraLayout.v6.3, Version=10.2.8.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
+    <Reference Include="DevExpress.ExpressApp.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.Win.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.OfficeSkins.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Persistent.Base.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MySql.Data" />
     <Reference Include="MySql.Data.CF" />
     <Reference Include="MySql.Data.Entity" />
     <Reference Include="MySql.Web" />
+    <Reference Include="Office, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SistemaConservadora, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -75,6 +112,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomGrid.Designer.cs">
+      <DependentUpon>CustomGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCadBoletos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +163,16 @@
     <Compile Include="Funcoes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AtasWeb\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BalancetesWeb\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\BoletosWeb\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,6 +198,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomGrid.resx">
+      <DependentUpon>CustomGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCadBoletos.resx">
       <DependentUpon>FormCadBoletos.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +222,7 @@
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -186,6 +243,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\AtasWeb\AtasWeb.wsdl" />
+    <None Include="Service References\AtasWeb\SistemaConservadora.AtasWeb.ata.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AtasWeb\SistemaConservadora.AtasWeb.moradores.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BalancetesWeb\BalancetesWeb.wsdl" />
+    <None Include="Service References\BalancetesWeb\SistemaConservadora.BalancetesWeb.balancete.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BalancetesWeb\SistemaConservadora.BalancetesWeb.moradores.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BoletosWeb\BoletosWeb.wsdl" />
     <None Include="Service References\BoletosWeb\SistemaConservadora.BoletosWeb.boleto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -278,6 +349,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AtasWeb\" />
+    <WCFMetadataStorage Include="Service References\BalancetesWeb\" />
     <WCFMetadataStorage Include="Service References\BoletosWeb\" />
     <WCFMetadataStorage Include="Service References\CondominioWeb\" />
     <WCFMetadataStorage Include="Service References\ConexaoWS\" />
@@ -316,6 +389,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Line Chart.ico" />
+    <None Include="Service References\BalancetesWeb\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BalancetesWeb\configuration.svcinfo" />
+    <None Include="Service References\BalancetesWeb\configuration91.svcinfo" />
+    <None Include="Service References\BalancetesWeb\BalancetesWeb.disco" />
+    <None Include="Service References\AtasWeb\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AtasWeb\configuration.svcinfo" />
+    <None Include="Service References\AtasWeb\configuration91.svcinfo" />
+    <None Include="Service References\AtasWeb\AtasWeb.disco" />
+    <None Include="Service References\RecadosWeb\RecadosWeb.disco" />
     <None Include="Service References\BoletosWeb\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -329,7 +417,6 @@
     </None>
     <None Include="Service References\RecadosWeb\configuration.svcinfo" />
     <None Include="Service References\RecadosWeb\configuration91.svcinfo" />
-    <None Include="Service References\RecadosWeb\RecadosWeb.disco" />
     <None Include="Service References\MoradoresWeb\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -337,6 +424,25 @@
     <None Include="Service References\MoradoresWeb\configuration.svcinfo" />
     <None Include="Service References\MoradoresWeb\configuration91.svcinfo" />
     <None Include="Service References\MoradoresWeb\MoradoresWeb.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
