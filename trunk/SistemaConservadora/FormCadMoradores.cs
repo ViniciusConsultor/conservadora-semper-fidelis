@@ -18,42 +18,29 @@ namespace SistemaConservadora
        
         public FormCadMoradores():base()
         {
-            InitializeComponent();
-            TabelaData.DataSource = moradoresWeb.RetornaLista(Funcoes.Acesso);
-            TabelaData.Columns[TabelaData.Columns.Count - 1].Visible = false;
-            TabelaData.Columns["senha"].Visible = false;
+            InitializeComponent();        
         
             comboCondominios.DataSource = condominioWeb.RetornaLista(Funcoes.Acesso);
             comboCondominios.DisplayMember = "nome";
             comboCondominios.ValueMember = "IdCondominios";
             condominioLista = new List<MoradoresWeb.condominio>();
+            BindGrid();
 
         }
 
         public override void ClearFields()
-        {
-            lblIdentificacao.Text = "";
-            txtCPF.Text = "";
-            txtLogin.Text = "";
-            txtNome.Text = ""; 
-            comboCondominios.Text = "";
+        {          
             condominioLista.Clear();
-            TabelaCondominioData.DataSource = condominioLista;
+            BindDetalhe();
         }
 
         public override void Populate()
         {
-            MoradoresWeb.moradores morador = moradoresWeb.RetornaItem(Convert.ToInt32(TabelaData.SelectedRows[0].Cells[0].Value), Funcoes.Acesso);
-            
-            lblIdentificacao.Text = morador.idmoradores.ToString();
-            
-            txtNome.Text = morador.nome;
-            txtCPF.Text = morador.cpf;
-            txtLogin.Text = morador.login;
+            MoradoresWeb.moradores morador = (MoradoresWeb.moradores)BDS.Current;                       
 
             condominioLista = moradoresWeb.Retornacondominios(morador.idmoradores,Funcoes.Acesso).ToList();
 
-            TabelaCondominioData.DataSource = condominioLista.ToArray();
+            BindDetalhe();
         }
 
         private void btnAddCondominio_Click(object sender, EventArgs e)
@@ -67,9 +54,7 @@ namespace SistemaConservadora
             else
             {
                 condominioLista.Add(condo);
-                TabelaCondominioData.DataSource = condominioLista.ToArray();
-                TabelaCondominioData.Columns[TabelaCondominioData.Columns.Count - 1].Visible = false;
-                TabelaCondominioData.Refresh();
+                BindDetalhe();
             }
         }
 
@@ -80,24 +65,17 @@ namespace SistemaConservadora
 
         private void btnRmvCondominio_Click(object sender, EventArgs e)
         {
-            if (TabelaCondominioData.SelectedRows.Count > 0)
+            if (FonteDeDados.Count > 0)
             {
-                condominioLista.RemoveAt(TabelaCondominioData.SelectedRows[0].Index);
-
-                TabelaCondominioData.DataSource = condominioLista.ToArray();
-                TabelaCondominioData.Columns[TabelaCondominioData.Columns.Count - 1].Visible = false;
-                TabelaCondominioData.Refresh();
+                FonteDeDados.Remove(FonteDeDados.Current);
+                condominioLista.RemoveAt(((MoradoresWeb.condominio)FonteDeDados.Current).idcondominios);
             }
         }
 
         public override void Atualizar(int id)
         {
-            MoradoresWeb.moradores morador = new MoradoresWeb.moradores();
-            morador.idmoradores = id;
-            morador.nome = txtNome.Text;
-            morador.cpf = txtCPF.Text;
-            morador.login = txtLogin.Text;
-
+            MoradoresWeb.moradores morador = (MoradoresWeb.moradores)BDS.Current;
+     
             if (moradoresWeb.SalvaMorador(morador, Funcoes.Acesso))
             {
                 if (moradoresWeb.Salvacondominios(condominioLista.ToArray(), morador.idmoradores, Funcoes.Acesso))
@@ -119,11 +97,8 @@ namespace SistemaConservadora
 
         public override void Adicionar()
         {
-            MoradoresWeb.moradores moradores = new MoradoresWeb.moradores();
-            moradores.idmoradores = 0;
-            moradores.nome = txtNome.Text;
-            moradores.cpf = txtCPF.Text;
-            moradores.login = txtLogin.Text;
+            MoradoresWeb.moradores moradores = (MoradoresWeb.moradores)BDS.Current;
+  
             int id;
             if ((id = moradoresWeb.AdicionaMorador(moradores, Funcoes.Acesso)) > 0)
             {
@@ -145,10 +120,11 @@ namespace SistemaConservadora
         }
         public override void Excluir(int id)
         {
+            id = (BDS.Current as MoradoresWeb.moradores).idmoradores;
             if (moradoresWeb.Apagar(id, Funcoes.Acesso))
             {
                 MessageBox.Show("Excluido com sucesso!");
-                TabelaData.DataSource = moradoresWeb.RetornaLista(Funcoes.Acesso);
+           
                 base.Excluir(id);
             }
             else
@@ -158,9 +134,24 @@ namespace SistemaConservadora
         }
 
         protected override void Paginas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TabelaData.DataSource = moradoresWeb.RetornaLista(Funcoes.Acesso);
+        {          
             base.Paginas_SelectedIndexChanged(sender, e);
+        }
+
+        public override void BindGrid()
+        {
+            BDS.Clear();
+            foreach (MoradoresWeb.moradores morador in moradoresWeb.RetornaLista(Funcoes.Acesso))
+                BDS.Add(morador);
+            TabelaData.DataSource = BDS;
+        }
+
+        public void BindDetalhe()
+        {
+            FonteDeDados.Clear();
+            foreach (MoradoresWeb.condominio condominio in condominioLista.ToArray())
+                FonteDeDados.Add(condominio);
+            gridControl1.DataSource = FonteDeDados;
         }
     }
 }

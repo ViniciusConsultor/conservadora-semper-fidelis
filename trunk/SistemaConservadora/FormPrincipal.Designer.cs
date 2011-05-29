@@ -31,203 +31,138 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnCondominio = new System.Windows.Forms.Button();
-            this.btnMoradores = new System.Windows.Forms.Button();
-            this.Menu = new System.Windows.Forms.MenuStrip();
-            this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MnCondominio = new System.Windows.Forms.ToolStripMenuItem();
-            this.registoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.balanceteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.boletosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.barStatus = new System.Windows.Forms.StatusStrip();
             this.lblHoras = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.TemporizadorHoras = new System.Windows.Forms.Timer(this.components);
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.galleryControl1 = new DevExpress.XtraBars.Ribbon.GalleryControl();
+            this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
             this.panel1.SuspendLayout();
-            this.Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.barStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.galleryControl1)).BeginInit();
+            this.galleryControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.btnCondominio);
-            this.panel1.Controls.Add(this.btnMoradores);
-            this.panel1.Controls.Add(this.Menu);
+            this.panel1.Controls.Add(this.ribbonControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(782, 122);
+            this.panel1.Size = new System.Drawing.Size(809, 122);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button4
+            // ribbonControl1
             // 
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(451, 27);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(106, 89);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Boletos";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.ribbonControl1.ApplicationButtonText = null;
             // 
-            // button3
             // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(339, 27);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(106, 89);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Recados";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.ExpandCollapseItem.Name = "";
+            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControl1.ExpandCollapseItem,
+            this.barButtonItem1,
+            this.barButtonItem2,
+            this.barButtonItem3,
+            this.barButtonItem4,
+            this.barButtonItem5,
+            this.barButtonItem6});
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.MaxItemId = 7;
+            this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.ribbonControl1.SelectedPage = this.ribbonPage1;
+            this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
+            this.ribbonControl1.ShowToolbarCustomizeItem = false;
+            this.ribbonControl1.Size = new System.Drawing.Size(809, 121);
+            this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(227, 27);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 89);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Balancete";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button2.UseVisualStyleBackColor = true;
+            // barButtonItem1
             // 
-            // btnCondominio
+            this.barButtonItem1.Caption = "Condomínios";
+            this.barButtonItem1.Id = 1;
+            this.barButtonItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.LargeGlyph")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
-            this.btnCondominio.Image = ((System.Drawing.Image)(resources.GetObject("btnCondominio.Image")));
-            this.btnCondominio.Location = new System.Drawing.Point(3, 27);
-            this.btnCondominio.Name = "btnCondominio";
-            this.btnCondominio.Size = new System.Drawing.Size(106, 89);
-            this.btnCondominio.TabIndex = 2;
-            this.btnCondominio.Text = "Condomínio";
-            this.btnCondominio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCondominio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCondominio.UseVisualStyleBackColor = true;
-            this.btnCondominio.Click += new System.EventHandler(this.btnCondominio_Click);
+            // barButtonItem2
             // 
-            // btnMoradores
+            this.barButtonItem2.Caption = "Moradores";
+            this.barButtonItem2.Id = 2;
+            this.barButtonItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.LargeGlyph")));
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
-            this.btnMoradores.Image = ((System.Drawing.Image)(resources.GetObject("btnMoradores.Image")));
-            this.btnMoradores.Location = new System.Drawing.Point(115, 27);
-            this.btnMoradores.Name = "btnMoradores";
-            this.btnMoradores.Size = new System.Drawing.Size(106, 89);
-            this.btnMoradores.TabIndex = 1;
-            this.btnMoradores.Text = "Moradores";
-            this.btnMoradores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMoradores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMoradores.UseVisualStyleBackColor = true;
-            this.btnMoradores.Click += new System.EventHandler(this.btnMoradores_Click);
+            // barButtonItem3
             // 
-            // Menu
+            this.barButtonItem3.Caption = "Recados";
+            this.barButtonItem3.Id = 3;
+            this.barButtonItem3.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.LargeGlyph")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
-            this.Menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arquivoToolStripMenuItem,
-            this.cadastroToolStripMenuItem,
-            this.registoToolStripMenuItem,
-            this.ajudaToolStripMenuItem});
-            this.Menu.Location = new System.Drawing.Point(0, 0);
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(782, 24);
-            this.Menu.TabIndex = 0;
-            this.Menu.Text = "Menu";
+            // barButtonItem4
             // 
-            // arquivoToolStripMenuItem
+            this.barButtonItem4.Caption = "Balancetes";
+            this.barButtonItem4.Id = 4;
+            this.barButtonItem4.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.LargeGlyph")));
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
-            this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sairToolStripMenuItem});
-            this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
-            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.arquivoToolStripMenuItem.Text = "Arquivo";
+            // barButtonItem5
             // 
-            // sairToolStripMenuItem
+            this.barButtonItem5.Caption = "Atas";
+            this.barButtonItem5.Id = 5;
+            this.barButtonItem5.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.LargeGlyph")));
+            this.barButtonItem5.Name = "barButtonItem5";
             // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.sairToolStripMenuItem.Text = "Sair";
+            // barButtonItem6
             // 
-            // cadastroToolStripMenuItem
+            this.barButtonItem6.Caption = "Boletos";
+            this.barButtonItem6.Id = 6;
+            this.barButtonItem6.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.LargeGlyph")));
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
-            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.moradorToolStripMenuItem,
-            this.MnCondominio});
-            this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.cadastroToolStripMenuItem.Text = "Cadastro";
+            // ribbonPage1
             // 
-            // moradorToolStripMenuItem
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "ribbonPage1";
             // 
-            this.moradorToolStripMenuItem.Name = "moradorToolStripMenuItem";
-            this.moradorToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.moradorToolStripMenuItem.Text = "Morador";
+            // ribbonPageGroup2
             // 
-            // MnCondominio
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Cadastro Básico";
             // 
-            this.MnCondominio.Name = "MnCondominio";
-            this.MnCondominio.Size = new System.Drawing.Size(140, 22);
-            this.MnCondominio.Text = "Condomínio";
-            this.MnCondominio.Click += new System.EventHandler(this.btnCondominio_Click);
+            // ribbonPageGroup3
             // 
-            // registoToolStripMenuItem
-            // 
-            this.registoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.balanceteToolStripMenuItem,
-            this.recadosToolStripMenuItem,
-            this.boletosToolStripMenuItem});
-            this.registoToolStripMenuItem.Name = "registoToolStripMenuItem";
-            this.registoToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.registoToolStripMenuItem.Text = "Registo";
-            // 
-            // balanceteToolStripMenuItem
-            // 
-            this.balanceteToolStripMenuItem.Name = "balanceteToolStripMenuItem";
-            this.balanceteToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.balanceteToolStripMenuItem.Text = "Balancete";
-            // 
-            // recadosToolStripMenuItem
-            // 
-            this.recadosToolStripMenuItem.Name = "recadosToolStripMenuItem";
-            this.recadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.recadosToolStripMenuItem.Text = "Recados";
-            // 
-            // boletosToolStripMenuItem
-            // 
-            this.boletosToolStripMenuItem.Name = "boletosToolStripMenuItem";
-            this.boletosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.boletosToolStripMenuItem.Text = "Boletos";
-            // 
-            // ajudaToolStripMenuItem
-            // 
-            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sobreToolStripMenuItem});
-            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.ajudaToolStripMenuItem.Text = "Ajuda";
-            // 
-            // sobreToolStripMenuItem
-            // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.sobreToolStripMenuItem.Text = "Sobre...";
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem5);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Informações";
             // 
             // pnlPrincipal
             // 
@@ -235,7 +170,7 @@
             this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPrincipal.Location = new System.Drawing.Point(0, 122);
             this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(782, 213);
+            this.pnlPrincipal.Size = new System.Drawing.Size(809, 308);
             this.pnlPrincipal.TabIndex = 1;
             // 
             // barStatus
@@ -243,47 +178,68 @@
             this.barStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblHoras,
             this.toolStripStatusLabel1});
-            this.barStatus.Location = new System.Drawing.Point(0, 313);
+            this.barStatus.Location = new System.Drawing.Point(0, 408);
             this.barStatus.Name = "barStatus";
-            this.barStatus.Size = new System.Drawing.Size(782, 22);
+            this.barStatus.Size = new System.Drawing.Size(809, 22);
             this.barStatus.TabIndex = 2;
             // 
             // lblHoras
             // 
             this.lblHoras.Name = "lblHoras";
-            this.lblHoras.Size = new System.Drawing.Size(61, 17);
+            this.lblHoras.Size = new System.Drawing.Size(57, 17);
             this.lblHoras.Text = "{00:00:00}";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(109, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // TemporizadorHoras
             // 
             this.TemporizadorHoras.Tick += new System.EventHandler(this.TemporizadorHoras_Tick);
             // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Cadastros Básicos";
+            // 
+            // galleryControl1
+            // 
+            this.galleryControl1.Controls.Add(this.galleryControlClient1);
+            this.galleryControl1.DesignGalleryGroupIndex = 0;
+            this.galleryControl1.DesignGalleryItemIndex = 0;
+            this.galleryControl1.Location = new System.Drawing.Point(0, 0);
+            this.galleryControl1.Name = "galleryControl1";
+            this.galleryControl1.Size = new System.Drawing.Size(120, 95);
+            this.galleryControl1.TabIndex = 3;
+            // 
+            // galleryControlClient1
+            // 
+            this.galleryControlClient1.GalleryControl = this.galleryControl1;
+            this.galleryControlClient1.Location = new System.Drawing.Point(2, 2);
+            this.galleryControlClient1.Size = new System.Drawing.Size(99, 91);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 335);
+            this.ClientSize = new System.Drawing.Size(809, 430);
             this.Controls.Add(this.barStatus);
             this.Controls.Add(this.pnlPrincipal);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.galleryControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.Menu;
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conservadora {Nome} - Sistema de Administração";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.Menu.ResumeLayout(false);
-            this.Menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.barStatus.ResumeLayout(false);
             this.barStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.galleryControl1)).EndInit();
+            this.galleryControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,23 +252,19 @@
         private System.Windows.Forms.StatusStrip barStatus;
         private System.Windows.Forms.ToolStripStatusLabel lblHoras;
         private System.Windows.Forms.Timer TemporizadorHoras;
-        private System.Windows.Forms.MenuStrip Menu;
-        private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem moradorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem MnCondominio;
-        private System.Windows.Forms.ToolStripMenuItem registoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem balanceteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem recadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem boletosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnCondominio;
-        private System.Windows.Forms.Button btnMoradores;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.GalleryControl galleryControl1;
+        private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }

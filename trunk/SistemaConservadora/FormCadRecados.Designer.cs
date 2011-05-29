@@ -36,12 +36,40 @@
             this.rchTexto = new System.Windows.Forms.RichTextBox();
             this.cmbCondominio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.TabManutencao.SuspendLayout();
+            this.TabelaData = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colidrecados = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTítulo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTexto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.FonteDeDados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Paginas)).BeginInit();
+            this.Paginas.SuspendLayout();
+            this.TabAcesso.SuspendLayout();
+            this.TabManutencao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // BDS
+            // 
+            this.BDS.DataSource = typeof(SistemaConservadora.RecadosWeb.recado);
+            // 
+            // Paginas
+            // 
+            this.Paginas.SelectedTabPage = this.TabAcesso;
+            this.Paginas.Size = new System.Drawing.Size(702, 337);
+            // 
+            // TabAcesso
+            // 
+            this.TabAcesso.Controls.Add(this.TabelaData);
+            this.TabAcesso.Size = new System.Drawing.Size(696, 331);
             // 
             // TabManutencao
             // 
+            this.TabManutencao.Appearance.PageClient.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.TabManutencao.Appearance.PageClient.Options.UseBackColor = true;
             this.TabManutencao.Controls.Add(this.label2);
             this.TabManutencao.Controls.Add(this.cmbCondominio);
             this.TabManutencao.Controls.Add(this.rchTexto);
@@ -50,10 +78,12 @@
             this.TabManutencao.Controls.Add(this.label1);
             this.TabManutencao.Controls.Add(this.lblIdentificacao);
             this.TabManutencao.Controls.Add(this.lblID);
+            this.TabManutencao.Size = new System.Drawing.Size(696, 331);
             // 
             // lblIdentificacao
             // 
             this.lblIdentificacao.AutoSize = true;
+            this.lblIdentificacao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "idrecados", true));
             this.lblIdentificacao.Location = new System.Drawing.Point(136, 31);
             this.lblIdentificacao.Name = "lblIdentificacao";
             this.lblIdentificacao.Size = new System.Drawing.Size(76, 13);
@@ -80,6 +110,7 @@
             // 
             // txtTitulo
             // 
+            this.txtTitulo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "Título", true));
             this.txtTitulo.Location = new System.Drawing.Point(136, 63);
             this.txtTitulo.MaxLength = 50;
             this.txtTitulo.Name = "txtTitulo";
@@ -97,6 +128,7 @@
             // 
             // rchTexto
             // 
+            this.rchTexto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "Texto", true));
             this.rchTexto.Location = new System.Drawing.Point(136, 89);
             this.rchTexto.Name = "rchTexto";
             this.rchTexto.Size = new System.Drawing.Size(517, 190);
@@ -105,6 +137,7 @@
             // 
             // cmbCondominio
             // 
+            this.cmbCondominio.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.BDS, "idcondominios", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cmbCondominio.FormattingEnabled = true;
             this.cmbCondominio.Location = new System.Drawing.Point(136, 285);
             this.cmbCondominio.Name = "cmbCondominio";
@@ -120,6 +153,70 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Condomínio :";
             // 
+            // TabelaData
+            // 
+            this.TabelaData.DataSource = this.BDS;
+            this.TabelaData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabelaData.Location = new System.Drawing.Point(0, 0);
+            this.TabelaData.MainView = this.gridView1;
+            this.TabelaData.Margin = new System.Windows.Forms.Padding(0);
+            this.TabelaData.Name = "TabelaData";
+            this.TabelaData.Size = new System.Drawing.Size(696, 331);
+            this.TabelaData.TabIndex = 1;
+            this.TabelaData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colidrecados,
+            this.colTítulo,
+            this.colTexto,
+            this.gridColumn1});
+            this.gridView1.GridControl = this.TabelaData;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateAllContent;
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // colidrecados
+            // 
+            this.colidrecados.Caption = "Id";
+            this.colidrecados.FieldName = "idrecados";
+            this.colidrecados.Name = "colidrecados";
+            this.colidrecados.Visible = true;
+            this.colidrecados.VisibleIndex = 0;
+            // 
+            // colTítulo
+            // 
+            this.colTítulo.Caption = "Título";
+            this.colTítulo.FieldName = "Título";
+            this.colTítulo.Name = "colTítulo";
+            this.colTítulo.Visible = true;
+            this.colTítulo.VisibleIndex = 1;
+            // 
+            // colTexto
+            // 
+            this.colTexto.Caption = "Texto";
+            this.colTexto.FieldName = "Texto";
+            this.colTexto.Name = "colTexto";
+            this.colTexto.Visible = true;
+            this.colTexto.VisibleIndex = 2;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Condominio";
+            this.gridColumn1.FieldName = "NomeCondominio";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            // 
             // FormCadRecados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,9 +224,15 @@
             this.ClientSize = new System.Drawing.Size(702, 376);
             this.Name = "FormCadRecados";
             this.Text = "Cadastro de Recados";
+            ((System.ComponentModel.ISupportInitialize)(this.FonteDeDados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Paginas)).EndInit();
+            this.Paginas.ResumeLayout(false);
+            this.TabAcesso.ResumeLayout(false);
             this.TabManutencao.ResumeLayout(false);
             this.TabManutencao.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FonteDeDados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabelaData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +248,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbCondominio;
         private System.Windows.Forms.RichTextBox rchTexto;
+        private DevExpress.XtraGrid.GridControl TabelaData;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colidrecados;
+        private DevExpress.XtraGrid.Columns.GridColumn colTítulo;
+        private DevExpress.XtraGrid.Columns.GridColumn colTexto;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

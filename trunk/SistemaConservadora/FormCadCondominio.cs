@@ -16,34 +16,24 @@ namespace SistemaConservadora
         public FormCadCondominio() : base()
         {
             InitializeComponent();
-            TabelaData.DataSource = condominioWeb.RetornaLista(Funcoes.Acesso);
-            TabelaData.Columns[TabelaData.Columns.Count - 1].Visible = false;
+            BindGrid();
         }
 
         public override void ClearFields()
         {
-            lblIdentificacao.Text = "";
-            txtNome.Text = "";
-            txtEndereco.Text = "";
+         
         }
        
         public override void Populate()
         {
-            CondominioWeb.condominio condominio = condominioWeb.RetornaItem(Convert.ToInt32(TabelaData.SelectedRows[0].Cells[0].Value),Funcoes.Acesso);
-            lblIdentificacao.Text = condominio.idcondominios.ToString();
-            txtNome.Text = condominio.nome;
-            txtEndereco.Text = condominio.endereco;         
+                
            
         }
         
         public override void Atualizar(int id)
         {
-            CondominioWeb.condominio condominio = new CondominioWeb.condominio();
-          
-            condominio.idcondominios = Convert.ToInt32(lblIdentificacao.Text);
-            condominio.nome = txtNome.Text;
-            condominio.endereco = txtEndereco.Text;
-
+            CondominioWeb.condominio condominio = (CondominioWeb.condominio)BDS.Current;
+         
             if(condominioWeb.SalvaCondominio(condominio,Funcoes.Acesso))
             {
                 MessageBox.Show("Salvo com sucesso!");
@@ -57,15 +47,14 @@ namespace SistemaConservadora
 
         protected override void Paginas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TabelaData.DataSource = condominioWeb.RetornaLista(Funcoes.Acesso);
+       
             base.Paginas_SelectedIndexChanged(sender, e);
         }
 
         public override void Adicionar()
         {
-            CondominioWeb.condominio condominio = new CondominioWeb.condominio();
-            condominio.nome = txtNome.Text;
-            condominio.endereco = txtEndereco.Text;
+            CondominioWeb.condominio condominio = (CondominioWeb.condominio)BDS.Current;
+       
             if (condominioWeb.AdicionaCondominio(condominio,Funcoes.Acesso))
             {
                 MessageBox.Show("Adicionado com sucesso!");
@@ -79,16 +68,31 @@ namespace SistemaConservadora
 
         public override void Excluir(int id)
         {
+            id = ((CondominioWeb.condominio)BDS.Current).idcondominios;
             if (condominioWeb.Apagar(id,Funcoes.Acesso))
             {
                 MessageBox.Show("Excluido com sucesso!");
-                TabelaData.DataSource = condominioWeb.RetornaLista(Funcoes.Acesso);
+       
                 base.Excluir(id);
             }
             else
             {
                 MessageBox.Show("Falha ao excluir!");
             }
+        }
+        public override void BindGrid()
+        {
+
+            BDS.Clear();
+            foreach (CondominioWeb.condominio condominio in condominioWeb.RetornaLista(Funcoes.Acesso))
+                BDS.Add(condominio);
+            TabelaData.DataSource = BDS;
+        
+        }
+
+        private void TabelaData_DoubleClick(object sender, EventArgs e)
+        {
+
         }
         
      }
