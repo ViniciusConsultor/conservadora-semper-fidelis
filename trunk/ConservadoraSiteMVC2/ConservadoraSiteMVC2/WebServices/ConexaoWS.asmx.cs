@@ -15,8 +15,7 @@ namespace ConservadoraSiteMVC2.WebServices
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
     public class ConexaoWS : System.Web.Services.WebService
-    {
-
+    {        
         [WebMethod]
         public void Conectar()
         {

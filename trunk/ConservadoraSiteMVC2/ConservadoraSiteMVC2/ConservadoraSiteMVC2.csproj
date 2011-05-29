@@ -114,11 +114,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\ModeloMysql.Designer.cs">
+    <Compile Include="Models\MySqlModelo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloMysql.edmx</DependentUpon>
+      <DependentUpon>MySqlModelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RecadosCompleto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServices\BoletosWeb.asmx.cs">
       <DependentUpon>BoletosWeb.asmx</DependentUpon>
@@ -131,6 +132,14 @@
     <Compile Include="WebServices\Conexao.cs" />
     <Compile Include="WebServices\ConexaoWS.asmx.cs">
       <DependentUpon>ConexaoWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\AtasWeb.asmx.cs">
+      <DependentUpon>AtasWeb.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\BalancetesWeb.asmx.cs">
+      <DependentUpon>BalancetesWeb.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebServices\MoradoresWeb.asmx.cs">
@@ -180,6 +189,8 @@
     <Content Include="WebServices\BoletosWeb.asmx" />
     <Content Include="WebServices\CondominioWeb.asmx" />
     <Content Include="WebServices\ConexaoWS.asmx" />
+    <Content Include="WebServices\AtasWeb.asmx" />
+    <Content Include="WebServices\BalancetesWeb.asmx" />
     <Content Include="WebServices\MoradoresWeb.asmx" />
     <Content Include="WebServices\RecadosWeb.asmx" />
   </ItemGroup>
@@ -189,9 +200,9 @@
     <Folder Include="Boletos\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\ModeloMysql.edmx">
+    <EntityDeploy Include="Models\MySqlModelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloMysql.Designer.cs</LastGenOutput>
+      <LastGenOutput>MySqlModelo.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -208,7 +219,7 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
+          <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>1186</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>

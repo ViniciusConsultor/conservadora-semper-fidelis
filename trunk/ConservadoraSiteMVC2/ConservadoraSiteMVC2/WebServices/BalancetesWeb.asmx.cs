@@ -9,14 +9,14 @@ using ConservadoraSiteMVC2.Models;
 namespace ConservadoraSiteMVC2.WebServices
 {
     /// <summary>
-    /// Summary description for BoletosWeb
+    /// Summary description for BalancetesWeb
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
-    public class BoletosWeb : System.Web.Services.WebService
+    public class BalancetesWeb : System.Web.Services.WebService
     {
 
         [WebMethod]
@@ -25,7 +25,7 @@ namespace ConservadoraSiteMVC2.WebServices
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             try
             {
-                FileStream arquivo = File.Create(Directory.GetCurrentDirectory() + "\\Boletos\\" + nomeArquivo);
+                FileStream arquivo = File.Create(Directory.GetCurrentDirectory() + "\\Balancetes\\" + nomeArquivo);
                 arquivo.Write(dadosDoArquivo, 0, dadosDoArquivo.Length);
                 arquivo.Flush();
                 arquivo.Close();
@@ -34,7 +34,7 @@ namespace ConservadoraSiteMVC2.WebServices
             {
                 nomeArquivo = e.Message;
             }
-                return Directory.GetCurrentDirectory() + "\\Boletos\\" + nomeArquivo;
+                return Directory.GetCurrentDirectory() + "\\Balancetes\\" + nomeArquivo;
 
 
         }
@@ -73,37 +73,37 @@ namespace ConservadoraSiteMVC2.WebServices
 
 
         [WebMethod]
-        public List<boleto> RetornaLista(string acesso)
+        public List<balancete> RetornaLista(string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             conservadoraEntities model = Conexao.getInstance();
-            IQueryable<boleto> query = from p in model.boletos select p;
+            IQueryable<balancete> query = from p in model.balancetes select p;
             return query.ToList();
         }
 
         [WebMethod]
-        public boleto RetornaItem(int id, string acesso)
+        public balancete RetornaItem(int id, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             conservadoraEntities model = Conexao.getInstance();
-            IQueryable<boleto> query = from p in model.boletos where p.idboletos == id select p;
+            IQueryable<balancete> query = from p in model.balancetes where p.idbalancete == id select p;
             return query.First();
         }
 
         [WebMethod]
-        public bool SalvaBoleto(boleto boletop, string acesso)
+        public bool SalvaAta(balancete balancetesp, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             try
             {
                 conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> query = from p in model.boletos where p.idboletos == boletop.idboletos select p;
-                boleto boleto2 = query.First();
-                boleto2.idboletos = boletop.idboletos;
-                boleto2.sitiuacao = boletop.sitiuacao;
-                boleto2.data = boletop.data;
-                boleto2.caminhoArquivo = boletop.caminhoArquivo;
-                boleto2.idmoradores = boletop.idmoradores;
+                IQueryable<balancete> query = from p in model.balancetes where p.idbalancete == balancetesp.idbalancete select p;
+                balancete balancetes2 = query.First();
+                balancetes2.idbalancete = balancetesp.idbalancete;
+               
+                balancetes2.data = balancetesp.data;
+                balancetes2.caminhoArquivo = balancetesp.caminhoArquivo;
+                balancetes2.idcondominios = balancetesp.idcondominios;
                 model.SaveChanges();
                 return true;
             }
@@ -115,21 +115,21 @@ namespace ConservadoraSiteMVC2.WebServices
         }
 
         [WebMethod]
-        public bool AdicionaBoleto(boleto boletop, string acesso)
+        public bool AdicionaAta(balancete balancetesp, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             try
             {
                 conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> i = from p in model.boletos select p;
-                IEnumerable<boleto> max = i.OrderBy(p => p.idboletos);
+                IQueryable<balancete> i = from p in model.balancetes select p;
+                IEnumerable<balancete> max = i.OrderBy(p => p.idbalancete);
 
                 if (max.Count() > 0)
-                    boletop.idboletos = max.Last().idboletos == null ? 1 : max.Last().idboletos + 1;
+                    balancetesp.idbalancete = max.Last().idbalancete == null ? 1 : max.Last().idbalancete + 1;
                 else
-                    boletop.idboletos = 1;
+                    balancetesp.idbalancete = 1;
 
-                model.AddToboletos(boletop);
+                model.AddTobalancetes(balancetesp);
 
                 model.SaveChanges();
                 return true;
@@ -148,13 +148,13 @@ namespace ConservadoraSiteMVC2.WebServices
             try
             {
                 conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> i = from p in model.boletos where p.idboletos == id select p;
-                boleto boletop = i.First();
+                IQueryable<balancete> i = from p in model.balancetes where p.idbalancete == id select p;
+                balancete balancetesp = i.First();
 
-                if ((File.Exists(boletop.caminhoArquivo)))
-                    File.Delete(boletop.caminhoArquivo);
+                if ((File.Exists(balancetesp.caminhoArquivo)))
+                    File.Delete(balancetesp.caminhoArquivo);
 
-                model.DeleteObject(boletop);
+                model.DeleteObject(balancetesp);
                 model.SaveChanges();
                 return true;
             }

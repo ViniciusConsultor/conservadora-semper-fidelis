@@ -9,14 +9,14 @@ using ConservadoraSiteMVC2.Models;
 namespace ConservadoraSiteMVC2.WebServices
 {
     /// <summary>
-    /// Summary description for BoletosWeb
+    /// Summary description for AtasWeb
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
-    public class BoletosWeb : System.Web.Services.WebService
+    public class AtasWeb : System.Web.Services.WebService
     {
 
         [WebMethod]
@@ -25,7 +25,7 @@ namespace ConservadoraSiteMVC2.WebServices
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             try
             {
-                FileStream arquivo = File.Create(Directory.GetCurrentDirectory() + "\\Boletos\\" + nomeArquivo);
+                FileStream arquivo = File.Create(Directory.GetCurrentDirectory() + "\\Atas\\" + nomeArquivo);
                 arquivo.Write(dadosDoArquivo, 0, dadosDoArquivo.Length);
                 arquivo.Flush();
                 arquivo.Close();
@@ -34,7 +34,7 @@ namespace ConservadoraSiteMVC2.WebServices
             {
                 nomeArquivo = e.Message;
             }
-                return Directory.GetCurrentDirectory() + "\\Boletos\\" + nomeArquivo;
+                return Directory.GetCurrentDirectory() + "\\Atas\\" + nomeArquivo;
 
 
         }
@@ -73,37 +73,37 @@ namespace ConservadoraSiteMVC2.WebServices
 
 
         [WebMethod]
-        public List<boleto> RetornaLista(string acesso)
+        public List<ata> RetornaLista(string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             conservadoraEntities model = Conexao.getInstance();
-            IQueryable<boleto> query = from p in model.boletos select p;
+            IQueryable<ata> query = from p in model.atas select p;
             return query.ToList();
         }
 
         [WebMethod]
-        public boleto RetornaItem(int id, string acesso)
+        public ata RetornaItem(int id, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             conservadoraEntities model = Conexao.getInstance();
-            IQueryable<boleto> query = from p in model.boletos where p.idboletos == id select p;
+            IQueryable<ata> query = from p in model.atas where p.idata == id select p;
             return query.First();
         }
 
         [WebMethod]
-        public bool SalvaBoleto(boleto boletop, string acesso)
+        public bool SalvaAta(ata atap, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             try
             {
                 conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> query = from p in model.boletos where p.idboletos == boletop.idboletos select p;
-                boleto boleto2 = query.First();
-                boleto2.idboletos = boletop.idboletos;
-                boleto2.sitiuacao = boletop.sitiuacao;
-                boleto2.data = boletop.data;
-                boleto2.caminhoArquivo = boletop.caminhoArquivo;
-                boleto2.idmoradores = boletop.idmoradores;
+                IQueryable<ata> query = from p in model.atas where p.idata == atap.idata select p;
+                ata ata2 = query.First();
+                ata2.idata = atap.idata;
+               
+                ata2.data = atap.data;
+                ata2.caminhoArquivo = atap.caminhoArquivo;
+                ata2.idcondominios = atap.idcondominios;
                 model.SaveChanges();
                 return true;
             }
@@ -115,21 +115,21 @@ namespace ConservadoraSiteMVC2.WebServices
         }
 
         [WebMethod]
-        public bool AdicionaBoleto(boleto boletop, string acesso)
+        public bool AdicionaAta(ata atap, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             try
             {
                 conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> i = from p in model.boletos select p;
-                IEnumerable<boleto> max = i.OrderBy(p => p.idboletos);
+                IQueryable<ata> i = from p in model.atas select p;
+                IEnumerable<ata> max = i.OrderBy(p => p.idata);
 
                 if (max.Count() > 0)
-                    boletop.idboletos = max.Last().idboletos == null ? 1 : max.Last().idboletos + 1;
+                    atap.idata = max.Last().idata == null ? 1 : max.Last().idata + 1;
                 else
-                    boletop.idboletos = 1;
+                    atap.idata = 1;
 
-                model.AddToboletos(boletop);
+                model.AddToatas(atap);
 
                 model.SaveChanges();
                 return true;
@@ -148,13 +148,13 @@ namespace ConservadoraSiteMVC2.WebServices
             try
             {
                 conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> i = from p in model.boletos where p.idboletos == id select p;
-                boleto boletop = i.First();
+                IQueryable<ata> i = from p in model.atas where p.idata == id select p;
+                ata atap = i.First();
 
-                if ((File.Exists(boletop.caminhoArquivo)))
-                    File.Delete(boletop.caminhoArquivo);
+                if ((File.Exists(atap.caminhoArquivo)))
+                    File.Delete(atap.caminhoArquivo);
 
-                model.DeleteObject(boletop);
+                model.DeleteObject(atap);
                 model.SaveChanges();
                 return true;
             }
