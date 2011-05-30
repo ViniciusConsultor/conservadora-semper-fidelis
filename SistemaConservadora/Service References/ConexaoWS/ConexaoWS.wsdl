@@ -8,6 +8,16 @@
       <s:element name="ConectarResponse">
         <s:complexType />
       </s:element>
+      <s:element name="teste">
+        <s:complexType />
+      </s:element>
+      <s:element name="testeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ConectarSoapIn">
@@ -16,10 +26,20 @@
   <wsdl:message name="ConectarSoapOut">
     <wsdl:part name="parameters" element="tns:ConectarResponse" />
   </wsdl:message>
+  <wsdl:message name="testeSoapIn">
+    <wsdl:part name="parameters" element="tns:teste" />
+  </wsdl:message>
+  <wsdl:message name="testeSoapOut">
+    <wsdl:part name="parameters" element="tns:testeResponse" />
+  </wsdl:message>
   <wsdl:portType name="ConexaoWSSoap">
     <wsdl:operation name="Conectar">
       <wsdl:input message="tns:ConectarSoapIn" />
       <wsdl:output message="tns:ConectarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="teste">
+      <wsdl:input message="tns:testeSoapIn" />
+      <wsdl:output message="tns:testeSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ConexaoWSSoap" type="tns:ConexaoWSSoap">
@@ -33,11 +53,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="teste">
+      <soap:operation soapAction="http://tempuri.org/teste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ConexaoWSSoap12" type="tns:ConexaoWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Conectar">
       <soap12:operation soapAction="http://tempuri.org/Conectar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="teste">
+      <soap12:operation soapAction="http://tempuri.org/teste" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -163,7 +163,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SalvaAta">
+      <s:element name="SalvaBalancete">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="balancetesp" type="tns:balancete" />
@@ -171,14 +171,14 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SalvaAtaResponse">
+      <s:element name="SalvaBalanceteResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SalvaAtaResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="SalvaBalanceteResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AdicionaAta">
+      <s:element name="AdicionaBalancete">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="balancetesp" type="tns:balancete" />
@@ -186,10 +186,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AdicionaAtaResponse">
+      <s:element name="AdicionaBalanceteResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="AdicionaAtaResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdicionaBalanceteResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -246,17 +246,17 @@
   <wsdl:message name="RetornaItemSoapOut">
     <wsdl:part name="parameters" element="tns:RetornaItemResponse" />
   </wsdl:message>
-  <wsdl:message name="SalvaAtaSoapIn">
-    <wsdl:part name="parameters" element="tns:SalvaAta" />
+  <wsdl:message name="SalvaBalanceteSoapIn">
+    <wsdl:part name="parameters" element="tns:SalvaBalancete" />
   </wsdl:message>
-  <wsdl:message name="SalvaAtaSoapOut">
-    <wsdl:part name="parameters" element="tns:SalvaAtaResponse" />
+  <wsdl:message name="SalvaBalanceteSoapOut">
+    <wsdl:part name="parameters" element="tns:SalvaBalanceteResponse" />
   </wsdl:message>
-  <wsdl:message name="AdicionaAtaSoapIn">
-    <wsdl:part name="parameters" element="tns:AdicionaAta" />
+  <wsdl:message name="AdicionaBalanceteSoapIn">
+    <wsdl:part name="parameters" element="tns:AdicionaBalancete" />
   </wsdl:message>
-  <wsdl:message name="AdicionaAtaSoapOut">
-    <wsdl:part name="parameters" element="tns:AdicionaAtaResponse" />
+  <wsdl:message name="AdicionaBalanceteSoapOut">
+    <wsdl:part name="parameters" element="tns:AdicionaBalanceteResponse" />
   </wsdl:message>
   <wsdl:message name="ApagarSoapIn">
     <wsdl:part name="parameters" element="tns:Apagar" />
@@ -289,13 +289,13 @@
       <wsdl:input message="tns:RetornaItemSoapIn" />
       <wsdl:output message="tns:RetornaItemSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SalvaAta">
-      <wsdl:input message="tns:SalvaAtaSoapIn" />
-      <wsdl:output message="tns:SalvaAtaSoapOut" />
+    <wsdl:operation name="SalvaBalancete">
+      <wsdl:input message="tns:SalvaBalanceteSoapIn" />
+      <wsdl:output message="tns:SalvaBalanceteSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="AdicionaAta">
-      <wsdl:input message="tns:AdicionaAtaSoapIn" />
-      <wsdl:output message="tns:AdicionaAtaSoapOut" />
+    <wsdl:operation name="AdicionaBalancete">
+      <wsdl:input message="tns:AdicionaBalanceteSoapIn" />
+      <wsdl:output message="tns:AdicionaBalanceteSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Apagar">
       <wsdl:input message="tns:ApagarSoapIn" />
@@ -358,8 +358,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SalvaAta">
-      <soap:operation soapAction="http://tempuri.org/SalvaAta" style="document" />
+    <wsdl:operation name="SalvaBalancete">
+      <soap:operation soapAction="http://tempuri.org/SalvaBalancete" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -367,8 +367,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AdicionaAta">
-      <soap:operation soapAction="http://tempuri.org/AdicionaAta" style="document" />
+    <wsdl:operation name="AdicionaBalancete">
+      <soap:operation soapAction="http://tempuri.org/AdicionaBalancete" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -442,8 +442,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SalvaAta">
-      <soap12:operation soapAction="http://tempuri.org/SalvaAta" style="document" />
+    <wsdl:operation name="SalvaBalancete">
+      <soap12:operation soapAction="http://tempuri.org/SalvaBalancete" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -451,8 +451,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AdicionaAta">
-      <soap12:operation soapAction="http://tempuri.org/AdicionaAta" style="document" />
+    <wsdl:operation name="AdicionaBalancete">
+      <soap12:operation soapAction="http://tempuri.org/AdicionaBalancete" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

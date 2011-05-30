@@ -27,7 +27,7 @@ namespace SistemaConservadora
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if (txtLogin.Text == "admin" && txtSenha.Text == "Conservadora123")
+            if (txtLogin.Text == "admin" && txtSenha.Text == "admin")
             {
                 login = true;
                 conexaoWS.Conectar();

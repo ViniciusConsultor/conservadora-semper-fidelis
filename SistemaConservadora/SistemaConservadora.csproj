@@ -112,6 +112,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCadBalancetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadBalancetes.Designer.cs">
+      <DependentUpon>FormCadBalancetes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCadAtas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadAtas.Designer.cs">
+      <DependentUpon>FormCadAtas.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -198,6 +210,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormCadBalancetes.resx">
+      <DependentUpon>FormCadBalancetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadAtas.resx">
+      <DependentUpon>FormCadAtas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomGrid.resx">
       <DependentUpon>CustomGrid.cs</DependentUpon>
     </EmbeddedResource>

@@ -73,12 +73,19 @@ namespace SistemaConservadora
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            FormCadBalancetes cad = new FormCadBalancetes();
+            cad.ShowDialog();
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FormCadBoletos cad = new FormCadBoletos();
+            cad.ShowDialog();
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormCadAtas cad = new FormCadAtas();
             cad.ShowDialog();
         }
     }
