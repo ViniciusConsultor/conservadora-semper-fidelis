@@ -56,19 +56,19 @@ namespace SistemaConservadora.BalancetesWeb {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
         SistemaConservadora.BalancetesWeb.balancete RetornaItem(int id, string acesso);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalvaAta", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SalvaBalancete", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(RelatedEnd))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
-        bool SalvaAta(SistemaConservadora.BalancetesWeb.balancete balancetesp, string acesso);
+        bool SalvaBalancete(SistemaConservadora.BalancetesWeb.balancete balancetesp, string acesso);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdicionaAta", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdicionaBalancete", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(RelatedEnd))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
-        bool AdicionaAta(SistemaConservadora.BalancetesWeb.balancete balancetesp, string acesso);
+        bool AdicionaBalancete(SistemaConservadora.BalancetesWeb.balancete balancetesp, string acesso);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Apagar", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -621,12 +621,12 @@ namespace SistemaConservadora.BalancetesWeb {
             return base.Channel.RetornaItem(id, acesso);
         }
         
-        public bool SalvaAta(SistemaConservadora.BalancetesWeb.balancete balancetesp, string acesso) {
-            return base.Channel.SalvaAta(balancetesp, acesso);
+        public bool SalvaBalancete(SistemaConservadora.BalancetesWeb.balancete balancetesp, string acesso) {
+            return base.Channel.SalvaBalancete(balancetesp, acesso);
         }
         
-        public bool AdicionaAta(SistemaConservadora.BalancetesWeb.balancete balancetesp, string acesso) {
-            return base.Channel.AdicionaAta(balancetesp, acesso);
+        public bool AdicionaBalancete(SistemaConservadora.BalancetesWeb.balancete balancetesp, string acesso) {
+            return base.Channel.AdicionaBalancete(balancetesp, acesso);
         }
         
         public bool Apagar(int id, string acesso) {

@@ -71,6 +71,7 @@
             // 
             // Paginas
             // 
+            this.Paginas.SelectedTabPage = this.TabAcesso;
             this.Paginas.Size = new System.Drawing.Size(694, 288);
             // 
             // TabAcesso
@@ -120,7 +121,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "nome", true));
+            this.txtNome.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "nome", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtNome.Location = new System.Drawing.Point(136, 63);
             this.txtNome.MaxLength = 50;
             this.txtNome.Name = "txtNome";

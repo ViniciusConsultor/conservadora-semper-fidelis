@@ -64,18 +64,30 @@ namespace SistemaConservadora.RecadosWeb {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class recado : EntityObject {
         
-        private int idrecadosField;
+        private int idcondominiosField;
         
-        private string títuloField;
+        private int idrecadosField;
         
         private string textoField;
         
-        private int idcondominiosField;
+        private string títuloField;
         
         private EntityReferenceOfcondominio condominioReferenceField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int idcondominios {
+            get {
+                return this.idcondominiosField;
+            }
+            set {
+                this.idcondominiosField = value;
+                this.RaisePropertyChanged("idcondominios");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public int idrecados {
             get {
                 return this.idrecadosField;
@@ -83,18 +95,6 @@ namespace SistemaConservadora.RecadosWeb {
             set {
                 this.idrecadosField = value;
                 this.RaisePropertyChanged("idrecados");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Título {
-            get {
-                return this.títuloField;
-            }
-            set {
-                this.títuloField = value;
-                this.RaisePropertyChanged("Título");
             }
         }
         
@@ -112,13 +112,13 @@ namespace SistemaConservadora.RecadosWeb {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int idcondominios {
+        public string Título {
             get {
-                return this.idcondominiosField;
+                return this.títuloField;
             }
             set {
-                this.idcondominiosField = value;
-                this.RaisePropertyChanged("idcondominios");
+                this.títuloField = value;
+                this.RaisePropertyChanged("Título");
             }
         }
         
