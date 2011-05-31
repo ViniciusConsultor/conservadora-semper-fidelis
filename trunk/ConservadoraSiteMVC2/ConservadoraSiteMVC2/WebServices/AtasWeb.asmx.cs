@@ -109,6 +109,7 @@ namespace ConservadoraSiteMVC2.WebServices
             }
             catch (Exception e)
             {
+                var x = e.InnerException;
                 return false;
             }
 
@@ -129,6 +130,8 @@ namespace ConservadoraSiteMVC2.WebServices
                 else
                     atap.idata = 1;
 
+                atap.condominio = (from p in model.condominios where p.idcondominios == atap.idcondominios select p).FirstOrDefault();
+
                 model.AddToatas(atap);
 
                 model.SaveChanges();
@@ -136,6 +139,7 @@ namespace ConservadoraSiteMVC2.WebServices
             }
             catch (Exception e)
             {
+                var x = e.InnerException;
                 return false;
             }
 
