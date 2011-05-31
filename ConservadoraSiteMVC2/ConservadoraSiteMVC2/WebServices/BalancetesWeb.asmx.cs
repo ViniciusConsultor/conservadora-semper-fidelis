@@ -91,7 +91,7 @@ namespace ConservadoraSiteMVC2.WebServices
         }
 
         [WebMethod]
-        public bool SalvaAta(balancete balancetesp, string acesso)
+        public bool SalvaBalancete(balancete balancetesp, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             try
@@ -115,7 +115,7 @@ namespace ConservadoraSiteMVC2.WebServices
         }
 
         [WebMethod]
-        public bool AdicionaAta(balancete balancetesp, string acesso)
+        public bool AdicionaBalancete(balancete balancetesp, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
             try
@@ -136,6 +136,7 @@ namespace ConservadoraSiteMVC2.WebServices
             }
             catch (Exception e)
             {
+                var x = e.InnerException;
                 return false;
             }
 
