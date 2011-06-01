@@ -28,6 +28,18 @@ namespace ConservadoraSiteMVC2.WebServices
         }
 
         [WebMethod]
+        public List<RecadosCompleto> RetornaLista(string acesso)
+        {
+            if (acesso != Conexao.SenhaAcesso) throw new Exception();
+            conservadoraEntities model = Conexao.getInstance();
+            IQueryable<RecadosCompleto> query = from p in model.recados select new RecadosCompleto 
+            { 
+              NomeCondominio = p.condominio.nome  
+            };
+            return query.ToList();
+        }
+
+        [WebMethod]
         public recado RetornaItem(int id, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
