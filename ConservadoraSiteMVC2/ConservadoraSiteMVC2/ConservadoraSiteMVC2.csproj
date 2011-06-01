@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Condominios.cs" />
+    <Compile Include="Models\Moradores.cs" />
     <Compile Include="Models\MySqlModelo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
