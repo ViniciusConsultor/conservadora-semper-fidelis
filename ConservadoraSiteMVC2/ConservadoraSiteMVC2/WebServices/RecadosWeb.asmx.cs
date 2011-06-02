@@ -17,83 +17,34 @@ namespace ConservadoraSiteMVC2.WebServices
     // [System.Web.Script.Services.ScriptService]
     public class RecadosWeb : System.Web.Services.WebService
     {
+        private static Recados controle = new Recados();
 
         [WebMethod]
         public List<recado> RetornaLista(string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            conservadoraEntities model = Conexao.getInstance();
-            IQueryable<recado> query = from p in model.recados select p;
-            return query.ToList();
-        }
-
-        [WebMethod]
-        public List<RecadosCompleto> RetornaLista(string acesso)
-        {
-            if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            conservadoraEntities model = Conexao.getInstance();
-            IQueryable<RecadosCompleto> query = from p in model.recados select new RecadosCompleto 
-            { 
-              NomeCondominio = p.condominio.nome  
-            };
-            return query.ToList();
+            return controle.RetornaLista();
         }
 
         [WebMethod]
         public recado RetornaItem(int id, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            conservadoraEntities model = Conexao.getInstance();
-            IQueryable<recado> query = from p in model.recados where p.idrecados == id select p;
-            return query.First();
+            return controle.RetornaItem(id);
         }
 
         [WebMethod]
         public bool SalvaRecado(recado recado, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            try
-            {
-                conservadoraEntities model = Conexao.getInstance();
-                IQueryable<recado> query = from p in model.recados where p.idrecados == recado.idrecados select p;
-                recado recado2 = query.First();
-                recado2.idcondominios = recado.idcondominios;
-                recado2.Título = recado.Título;
-                recado2.Texto = recado.Texto;    
-                model.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
+            return controle.SalvaRecado(recado);
         }
 
         [WebMethod]
         public bool AdicionaRecado(recado recado, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            try
-            {
-                conservadoraEntities model = Conexao.getInstance();
-                IQueryable<recado> i = from p in model.recados select p;
-                IEnumerable<recado> max = i.OrderBy(p => p.idrecados);
-
-                if (max.Count() > 0)
-                    recado.idrecados = max.Last().idrecados == null ? 1 : max.Last().idrecados + 1;
-                else
-                    recado.idrecados = 1;
-
-                model.AddTorecados(recado);
-
-                model.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
+            return controle.AdicionaRecado(recado);
 
         }
 
@@ -101,20 +52,7 @@ namespace ConservadoraSiteMVC2.WebServices
         public bool Apagar(int id, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            try
-            {
-                conservadoraEntities model = Conexao.getInstance();
-                IQueryable<recado> i = from p in model.recados where p.idrecados == id select p;
-                recado recado = i.First();
-                model.DeleteObject(recado);
-                model.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
+            return controle.Apagar(id);
         }
     }
 }

@@ -15,13 +15,12 @@ namespace ConservadoraSiteMVC2.WebServices
         }
 
         private static Models.conservadoraEntities modelo = null;
-
+       
         public static Models.conservadoraEntities getInstance()
         {
             if (modelo == null)
             {
-                modelo = new Models.conservadoraEntities();
-     
+                modelo = new Models.conservadoraEntities();     
             }
             return modelo;
         }
