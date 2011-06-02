@@ -18,57 +18,27 @@ namespace ConservadoraSiteMVC2.WebServices
     // [System.Web.Script.Services.ScriptService]
     public class BoletosWeb : System.Web.Services.WebService
     {
-
+        private static Boletos controle = new Boletos();
         [WebMethod]
         public string SalvaArquivo(byte[] dadosDoArquivo, string nomeArquivo,string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            try
-            {
-                FileStream arquivo = File.Create(Directory.GetCurrentDirectory() + "\\Boletos\\" + nomeArquivo);
-                arquivo.Write(dadosDoArquivo, 0, dadosDoArquivo.Length);
-                arquivo.Flush();
-                arquivo.Close();
-            }
-            catch (Exception e)
-            {
-                nomeArquivo = e.Message;
-            }
-                return Directory.GetCurrentDirectory() + "\\Boletos\\" + nomeArquivo;
-
-
+            return controle.SalvaArquivo(dadosDoArquivo, nomeArquivo);
         }
 
-        [WebMethod]
-        public moradores teste()
-        {
-            return null;
-        }
-
+      
         [WebMethod]
         public byte[] DownloadBytes(string nomeArquivo, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            byte[] resultado;
-            try
-            {                
-                FileStream arquivo = File.OpenRead(nomeArquivo);
-                resultado = new byte[arquivo.Length];
-                arquivo.Read(resultado, 0, resultado.Length);
-                arquivo.Close();
-            }
-            catch 
-            {
-                return null;
-            }
-            return resultado;
+            return controle.DownloadBytes(nomeArquivo);
         }
 
         [WebMethod]
         public bool existeArquivo(string nomeArquivo, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            return File.Exists(nomeArquivo);        
+            return controle.existeArquivo(nomeArquivo);
         }
 
 
@@ -76,93 +46,35 @@ namespace ConservadoraSiteMVC2.WebServices
         public List<boleto> RetornaLista(string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            conservadoraEntities model = Conexao.getInstance();
-            IQueryable<boleto> query = from p in model.boletos select p;
-            return query.ToList();
+            return controle.RetornaLista();
         }
 
         [WebMethod]
         public boleto RetornaItem(int id, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            conservadoraEntities model = Conexao.getInstance();
-            IQueryable<boleto> query = from p in model.boletos where p.idboletos == id select p;
-            return query.First();
+            return controle.RetornaItem(id);
         }
 
         [WebMethod]
         public bool SalvaBoleto(boleto boletop, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            try
-            {
-                conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> query = from p in model.boletos where p.idboletos == boletop.idboletos select p;
-                boleto boleto2 = query.First();
-                boleto2.idboletos = boletop.idboletos;
-                boleto2.sitiuacao = boletop.sitiuacao;
-                boleto2.data = boletop.data;
-                boleto2.caminhoArquivo = boletop.caminhoArquivo;
-                boleto2.idmoradores = boletop.idmoradores;
-                model.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
+            return controle.SalvaBoleto(boletop);
         }
 
         [WebMethod]
         public bool AdicionaBoleto(boleto boletop, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            try
-            {
-                conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> i = from p in model.boletos select p;
-                IEnumerable<boleto> max = i.OrderBy(p => p.idboletos);
-
-                if (max.Count() > 0)
-                    boletop.idboletos = max.Last().idboletos == null ? 1 : max.Last().idboletos + 1;
-                else
-                    boletop.idboletos = 1;
-
-                model.AddToboletos(boletop);
-
-                model.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
+            return controle.AdicionaBoleto(boletop);
         }
 
         [WebMethod]
         public bool Apagar(int id, string acesso)
         {
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
-            try
-            {
-                conservadoraEntities model = Conexao.getInstance();
-                IQueryable<boleto> i = from p in model.boletos where p.idboletos == id select p;
-                boleto boletop = i.First();
-
-                if ((File.Exists(boletop.caminhoArquivo)))
-                    File.Delete(boletop.caminhoArquivo);
-
-                model.DeleteObject(boletop);
-                model.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
+            return controle.Apagar(id);
         }
     }
 }

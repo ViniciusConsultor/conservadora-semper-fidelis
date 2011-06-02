@@ -114,6 +114,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Atas.cs" />
+    <Compile Include="Models\Balancetes.cs" />
+    <Compile Include="Models\Boletos.cs" />
     <Compile Include="Models\Condominios.cs" />
     <Compile Include="Models\Moradores.cs" />
     <Compile Include="Models\MySqlModelo.Designer.cs">
@@ -121,6 +124,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MySqlModelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Recados.cs" />
     <Compile Include="Models\RecadosCompleto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServices\BoletosWeb.asmx.cs">
