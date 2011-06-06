@@ -6,7 +6,7 @@ using ConservadoraSiteMVC2.WebServices;
 namespace ConservadoraSiteMVC2.Models
 {
     public class Moradores
-    {
+    { 
         
         public List<moradores> RetornaLista()
         {
@@ -22,6 +22,21 @@ namespace ConservadoraSiteMVC2.Models
             conservadoraEntities model = Conexao.getInstance();
             IQueryable<moradores> query = from p in model.moradores where p.idmoradores == id select p;
             return query.First();
+        }
+
+        public moradores RetornaItem(string id)
+        {
+            conservadoraEntities model = Conexao.getInstance();
+            IQueryable<moradores> query = from p in model.moradores where p.login == id select p;
+            try
+            {
+                return query.First();
+            }
+            catch (Exception e)
+            {
+                var a = e.InnerException;
+                return null;
+            }
         }
 
        
@@ -51,6 +66,7 @@ namespace ConservadoraSiteMVC2.Models
                 morador2.nome = morador.nome;
                 morador2.cpf = morador.cpf;
                 morador2.login = morador.login;
+                morador2.email = morador.email;
                 model.SaveChanges();
                 return true;
             }
@@ -112,6 +128,16 @@ namespace ConservadoraSiteMVC2.Models
                 model.AddTomoradores(morador);
                
                 model.SaveChanges();
+
+                RegisterModel rm = new RegisterModel();
+                rm.UserName = morador.login;
+                rm.Password = morador.cpf;
+                rm.Email = morador.email;
+               
+                AccountMembershipService ac = new AccountMembershipService();
+                ac.CreateUser(rm.UserName, rm.Password, rm.Email);
+               
+
                 return morador.idmoradores;
             }
             catch (Exception e)
@@ -137,6 +163,18 @@ namespace ConservadoraSiteMVC2.Models
                 return false;
             }
 
+        }
+
+        public bool ClearPassword(moradores morador)
+        {
+
+            RegisterModel rm = new RegisterModel();
+            rm.UserName = morador.login;
+            rm.Password = morador.cpf;
+            rm.Email = morador.email;
+            AccountMembershipService ac = new AccountMembershipService();
+            return ac.ResertarSenha(rm.UserName, rm.Password);                   
+            
         }
     }
     }

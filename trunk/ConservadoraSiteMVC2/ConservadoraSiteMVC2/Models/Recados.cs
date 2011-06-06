@@ -94,5 +94,17 @@ namespace ConservadoraSiteMVC2.Models
             }
 
         }
+
+        public List<recado> RetornaRecadosPorMorador(moradores mor)
+        {
+            conservadoraEntities model = Conexao.getInstance();
+            var q = from p in model.recados
+                    join c in model.condominios_moradores on p.idcondominios equals c.idcondominios
+                    join d in model.moradores on c.idmoradores equals d.idmoradores
+                    where d.idmoradores == mor.idmoradores
+                    || p.idcondominios == (from x in model.condominios where x.Sindico == mor.idmoradores select x.idcondominios).FirstOrDefault()
+                    select p;
+            return q.ToList();
+        }
     }
 }

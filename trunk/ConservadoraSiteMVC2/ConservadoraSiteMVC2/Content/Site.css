@@ -5,12 +5,13 @@ to use a different color start by replacing all instances of
 ----------------------------------------------------------*/
 body
 {
-    background-color: #5c87b2;
+    background-color: #0B5E9C;
     font-size: .75em;
     font-family: Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
     color: #696969;
+    text-align: center;
 }
 
 a:link
@@ -32,10 +33,11 @@ a:active
     color: #12eb87;
 }
 
-p, ul
+ul
 {
     margin-bottom: 20px;
     line-height: 1.6em;
+    text-align: left;
 }
 
 /* HEADINGS   
@@ -56,10 +58,13 @@ h1
 h2
 {
     padding: 0 0 10px 0;
+    text-align: center;
 }
 h3
 {
-    font-size: 1.2em;
+    padding:0px;
+    font-size: 2em;
+    color: #1CCA0E;
 }
 h4
 {
@@ -87,6 +92,7 @@ page width. Or, you can specify an exact pixel width. */
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    height: 340px;
 }
 
 #header
@@ -95,18 +101,24 @@ page width. Or, you can specify an exact pixel width. */
     margin-bottom: 0px;
     color: #000;
     padding: 0;
+    text-align: left;
 }
 
 #header h1
 {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
     font-weight: bold;
     padding: 5px 0;
     margin: 0;
-    color: #fff;
-    border: none;
+    color: #FFFFFF;
     line-height: 2em;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 32px !important;
+    width: 900px;
+    height: 75px;
+    text-align: left;
 }
 
 #main
@@ -115,6 +127,7 @@ page width. Or, you can specify an exact pixel width. */
     background-color: #fff;
     margin-bottom: 30px;
     _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
+    border-radius: 10px;
 }
 
 #footer
@@ -129,53 +142,114 @@ page width. Or, you can specify an exact pixel width. */
 
 /* TAB MENU   
 ----------------------------------------------------------*/
-ul#menu
+div#menu
 {
-    border-bottom: 1px #5C87B2 solid;
-    padding: 0 0 2px;
+    border: 0px #fff solid;
+    padding: 5px 0 5px 0;
     position: relative;
-    margin: 0;
-    text-align: right;
+    margin: 10px;
+    text-align: center;
+    top: 0px;
+    left: 0px;
+    border-radius: 10px;
 }
 
-ul#menu li
+div.recados
 {
-    display: inline;
-    list-style: none;
+    border: 1px #ccc solid;
+    padding: 5px 0 5px 0;
+    position: relative;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
 }
 
-ul#menu li#greeting
+div#decoracao
 {
-    padding: 10px 20px;
+    border: 1px #fff solid;
+    padding: 5px 0 5px 0;
+    position: relative;
+    margin: 10px;
+    text-align: center;
+    top: 0px;
+    left: 0px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+div#titulo
+{
+    border: 1px #fff solid;
+    padding: 5px 0 5px 0;
+    position: relative;
+    margin: 10px;
+    text-align: center;
+    top: 0px;
+    left: 0px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #1CCA0E;
+}
+
+div#menu div
+{
+    display:inline-block;
+    text-align: center;
+    padding: 10px;
+    color: #0B5E9C;
+    width: 150px;
+    background-color: #e8eef4;
+    border-radius: 5px;
+ }
+
+div#menu div#greeting
+{
+    padding: 5px 20px; 
     font-weight: bold;
     text-decoration: none;
     line-height: 2.8em;
     color: #fff;
 }
 
-ul#menu li a
+div#menu div a
 {
     padding: 10px 20px;
     font-weight: bold;
     text-decoration: none;
-    line-height: 2.8em;
-    background-color: #e8eef4;
-    color: #034af3;
+    line-height: 2.8em;  
+    color: #0B5E9C;
+    width: 100%;
 }
 
-ul#menu li a:hover
+div#menu div:hover
 {
     background-color: #fff;
     text-decoration: none;
+    color: #1CCA0E;
 }
 
-ul#menu li a:active
+div#menu div a:hover
+{
+    background-color: #fff;
+    text-decoration: none;
+    color: #1CCA0E;
+}
+
+div#menu div:hover a
+{
+    background-color: #fff;
+    text-decoration: none;
+    color: #1CCA0E;
+}
+
+
+div#menu div a:active
 {
     background-color: #a6e2a6;
     text-decoration: none;
 }
 
-ul#menu li.selected a
+div#menu div.selected a
 {
     background-color: #fff;
     color: #000;
@@ -183,12 +257,56 @@ ul#menu li.selected a
 
 /* FORM LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
+div.atalho
+{
+    margin: 5px;
+    padding: 1em;
+    border: 1px solid #CCC;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    vertical-align: middle;
+}
 
+div.atalho img
+{
+    opacity:0.30;	
+}
+
+div.atalho:hover img
+{
+    opacity:1;	
+}
+
+div.atalho a
+{
+  color:#ccc;
+  text-decoration:none;
+  font-size:16px;	
+}
+
+div.atalho:hover a
+{
+  color:#000;
+  text-decoration:none;
+  font-size:16px;	
+}
+
+
+div.atalho:hover
+{
+   border:1px solid black;    
+}
 fieldset 
 {
     margin: 1em 0;
     padding: 1em;
     border: 1px solid #CCC;
+    clear: both;
+    width: 300px;
+    text-align: center;
 }
 
 fieldset p 
@@ -201,6 +319,7 @@ legend
     font-size: 1.1em;
     font-weight: 600;
     padding: 2px 4px 8px 4px;
+    text-align: center;
 }
 
 input[type="text"] 
@@ -252,14 +371,17 @@ table th
 
 #menucontainer
 {
-    margin-top:40px;
+    text-align: left;
 }
 
 div#title
 {
-    display:block;
-    float:left;
-    text-align:left;
+    margin: 0 0 40 0;
+    display: block;
+    float: none;
+    text-align: center;
+    height: 55px;
+    width: 832px;
 }
 
 #logindisplay

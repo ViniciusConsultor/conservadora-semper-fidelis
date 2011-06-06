@@ -5,19 +5,16 @@
 </asp:Content>
 
 <asp:Content ID="changePasswordContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Change Password</h2>
+
     <p>
-        Use the form below to change your password. 
-    </p>
-    <p>
-        New passwords are required to be a minimum of <%: ViewData["PasswordLength"] %> characters in length.
+        Senha deve ter no mínimo <%: ViewData["PasswordLength"] %> caracteres
     </p>
 
     <% using (Html.BeginForm()) { %>
-        <%: Html.ValidationSummary(true, "Password change was unsuccessful. Please correct the errors and try again.") %>
-        <div>
+        <%: Html.ValidationSummary(true, "Não foi possível alterar a senha. Tente novamente por favor") %>
+        <center>
             <fieldset>
-                <legend>Account Information</legend>
+                <legend>Informações</legend>
                 
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.OldPassword) %>
@@ -44,9 +41,12 @@
                 </div>
                 
                 <p>
-                    <input type="submit" value="Change Password" />
+                    <input type="submit" value="Alterar Senha" />
                 </p>
             </fieldset>
-        </div>
+        </center>
     <% } %>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="TituloControle" runat="server">
+<h3>Alterar Senha</h3>
 </asp:Content>

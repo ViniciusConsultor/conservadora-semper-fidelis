@@ -17,37 +17,37 @@ namespace ConservadoraSiteMVC2.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [DisplayName("Current password")]
+        [DisplayName("Senha Atual")]
         public string OldPassword { get; set; }
 
         [Required]
         [ValidatePasswordLength]
         [DataType(DataType.Password)]
-        [DisplayName("New password")]
+        [DisplayName("Nova Senha")]
         public string NewPassword { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [DisplayName("Confirm new password")]
+        [DisplayName("Senha de Confimação")]
         public string ConfirmPassword { get; set; }
     }
 
     public class LogOnModel
     {
         [Required]
-        [DisplayName("User name")]
+        [DisplayName("Login")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [DisplayName("Password")]
+        [DisplayName("Senha")]
         public string Password { get; set; }
 
-        [DisplayName("Remember me?")]
+        [DisplayName("Lembrar de mim")]
         public bool RememberMe { get; set; }
     }
 
-    [PropertiesMustMatch("Password", "ConfirmPassword", ErrorMessage = "The password and confirmation password do not match.")]
+    [PropertiesMustMatch("Password", "ConfirmPassword", ErrorMessage = "A senha de confirmação não confere!")]
     public class RegisterModel
     {
         [Required]
@@ -126,6 +126,12 @@ namespace ConservadoraSiteMVC2.Models
             MembershipCreateStatus status;
             _provider.CreateUser(userName, password, email, null, null, true, null, out status);
             return status;
+        }
+        public bool ResertarSenha(string login, string senha)
+        {
+            MembershipCreateStatus status;
+            MembershipUser user = _provider.GetUser(login, false);
+            return user.ChangePassword(user.GetPassword(), senha);        
         }
 
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
