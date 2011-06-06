@@ -15,7 +15,7 @@ namespace ConservadoraSiteMVC2.Models
         {            
             try
             {
-                FileStream arquivo = File.Create(Directory.GetCurrentDirectory() + "\\Boletos\\" + nomeArquivo);
+                FileStream arquivo = File.Create("C:\\inetpub\\vhosts\\conservadorasemperfidelis.com.br\\httpdocs\\sys\\Boletos\\" + nomeArquivo);
                 arquivo.Write(dadosDoArquivo, 0, dadosDoArquivo.Length);
                 arquivo.Flush();
                 arquivo.Close();
@@ -24,7 +24,7 @@ namespace ConservadoraSiteMVC2.Models
             {
                 nomeArquivo = e.Message;
             }
-            return Directory.GetCurrentDirectory() + "\\Boletos\\" + nomeArquivo;
+            return "C:\\inetpub\\vhosts\\conservadorasemperfidelis.com.br\\httpdocs\\sys\\Boletos\\" + nomeArquivo;
         }  
         
         public byte[] DownloadBytes(string nomeArquivo)
