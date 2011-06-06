@@ -114,6 +114,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Atas\Class1.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AtasController.cs" />
     <Compile Include="Controllers\BalancetesController.cs" />
@@ -287,7 +288,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_Themes\Theme1\" />
-    <Folder Include="Atas\" />
     <Folder Include="Balancetes\" />
     <Folder Include="Boletos\" />
   </ItemGroup>
