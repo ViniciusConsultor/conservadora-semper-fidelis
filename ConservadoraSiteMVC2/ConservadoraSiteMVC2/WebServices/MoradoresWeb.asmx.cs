@@ -75,5 +75,13 @@ namespace ConservadoraSiteMVC2.WebServices
             if (acesso != Conexao.SenhaAcesso) throw new Exception();
            return controle.Apagar(id);
         }
+
+        [WebMethod]
+        public bool ResetarSenha(int id, string acesso)
+        {
+          if (acesso != Conexao.SenhaAcesso) throw new Exception();
+          moradores mor = controle.RetornaItem(id);
+          return controle.ClearPassword(mor);
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace ConservadoraSiteMVC2.Models
                 condominio condominio2 = query.First();
                 condominio2.nome = condominio.nome;
                 condominio2.endereco = condominio.endereco;
+                condominio2.Sindico = condominio.Sindico;
                 model.SaveChanges();
                 return true;
             }

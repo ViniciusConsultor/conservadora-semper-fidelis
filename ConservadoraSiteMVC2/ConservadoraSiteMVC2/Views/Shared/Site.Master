@@ -5,36 +5,57 @@
 <head runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-</head>
+    <link rel="shortcut icon" href="favicon.ico" >
+    <style type="text/css">
+        #cons
+        {
+            height: 14px;
+            width: 305px;
+        }
+        #acme
+        {
+            margin-left: 550px;
+        }
+        .style1
+        {
+            color: #99FFCC;
+        }
+    </style>
+ </head>
 
 <body>
     <div class="page">
 
         <div id="header">
             <div id="title">
-                <h1>My MVC Application</h1>
+                <h1 class="style1">
+                    Conservadora Semper Fidelis</h1>
+                <p>&nbsp;</p>
             </div>
-              
+              <br />
             <div id="logindisplay">
                 <% Html.RenderPartial("LogOnUserControl"); %>
             </div> 
             
             <div id="menucontainer">
             
-                <ul id="menu">              
-                    <li><%: Html.ActionLink("Home", "Index", "Home")%></li>
-                    <li><%: Html.ActionLink("About", "About", "Home")%></li>
-                </ul>
+              <% Html.RenderPartial("Menu"); %>
             
             </div>
         </div>
-
+        <div id="decoracao"></div>
+        <div id="titulo"><asp:ContentPlaceHolder ID="TituloControle" runat="server" /></div>
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
 
             <div id="footer">
             </div>
+            <hr />
+            <p id="cons">2011 - Conservadora Semper Fidelis</p>
+            <p id="acme">Desenvolvido por: Acme Sites</p>
         </div>
     </div>
+    <p>
+        &nbsp;</p>
 </body>
 </html>
