@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ConservadoraSiteMVC2.WebServices;
 using System.IO;
+using System.Reflection;
 
 namespace ConservadoraSiteMVC2.Models
 {
@@ -15,7 +16,7 @@ namespace ConservadoraSiteMVC2.Models
         {
             try
             {
-                FileStream arquivo = File.Create("http://www.conservadorasemperfidelis.com.br/sys/Atas/" + nomeArquivo);
+                FileStream arquivo = File.Create("C:\\inetpub\\vhosts\\conservadorasemperfidelis.com.br\\httpdocs\\sys\\Atas\\" + nomeArquivo);
                 arquivo.Write(dadosDoArquivo, 0, dadosDoArquivo.Length);
                 arquivo.Flush();
                 arquivo.Close();
@@ -24,7 +25,7 @@ namespace ConservadoraSiteMVC2.Models
             {
                 nomeArquivo = e.Message;
             }
-            return "http://www.conservadorasemperfidelis.com.br/sys/Atas/" + nomeArquivo;
+            return "C:\\inetpub\\vhosts\\conservadorasemperfidelis.com.br\\httpdocs\\sys\\Atas\\" + nomeArquivo;
 
         }     
  
