@@ -12,13 +12,17 @@ namespace SistemaConservadora
     public partial class FormCadCondominio : FormCadastro
     {
         private static CondominioWeb.CondominioWebSoapClient condominioWeb = new CondominioWeb.CondominioWebSoapClient("CondominioWebSoap", Funcoes.Servidor + "CondominioWeb.asmx");
-
+        private static MoradoresWeb.MoradoresWebSoapClient moradoresWeb = new MoradoresWeb.MoradoresWebSoapClient("MoradoresWebSoap", Funcoes.Servidor + "MoradoresWeb.asmx");
+     
         public FormCadCondominio() : base()
         {
             InitializeComponent();
             BindGrid();
+            comboBox1.DataSource = moradoresWeb.RetornaLista(Funcoes.Acesso);
+            comboBox1.DisplayMember = "nome";
+            comboBox1.ValueMember = "idmoradores";
         }
-
+        
         public override void ClearFields()
         {
          

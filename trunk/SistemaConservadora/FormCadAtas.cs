@@ -37,7 +37,7 @@ namespace SistemaConservadora
         public override void Atualizar(int id)
         {
             AtasWeb.ata atas = (AtasWeb.ata)BDS.Current;          
-           
+          
 
             if(atasWeb.AdicionaAta(atas,Funcoes.Acesso))
             {
@@ -133,6 +133,16 @@ namespace SistemaConservadora
             foreach (AtasWeb.ata ata in atasWeb.RetornaLista(Funcoes.Acesso))
                 BDS.Add(ata);
             TabelaData.DataSource = BDS;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

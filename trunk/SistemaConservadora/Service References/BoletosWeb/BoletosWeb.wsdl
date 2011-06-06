@@ -18,59 +18,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="teste">
-        <s:complexType />
-      </s:element>
-      <s:element name="testeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="testeResult" type="tns:moradores" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="moradores">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityObject">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="bloco" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="cpf" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="idmoradores" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="EntityObject" abstract="true">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:StructuralObject">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="StructuralObject" abstract="true" />
-      <s:complexType name="EntityKey">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="EntitySetName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EntityContainerName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EntityKeyValues" type="tns:ArrayOfEntityKeyMember" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfEntityKeyMember">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityKeyMember" nillable="true" type="tns:EntityKeyMember" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="EntityKeyMember">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Value" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="DownloadBytes">
         <s:complexType>
           <s:sequence>
@@ -108,21 +55,13 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="RelatedEnd" abstract="true" />
-      <s:complexType name="EntityReference" abstract="true">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:RelatedEnd">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="EntityReferenceOfmoradores">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityReference" />
-        </s:complexContent>
-      </s:complexType>
+      <s:element name="RetornaListaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornaListaResult" type="tns:ArrayOfBoleto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:complexType name="ArrayOfBoleto">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="boleto" nillable="true" type="tns:boleto" />
@@ -137,18 +76,55 @@
               <s:element minOccurs="1" maxOccurs="1" name="idboletos" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="idmoradores" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="sitiuacao" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="valor" nillable="true" type="s:float" />
               <s:element minOccurs="0" maxOccurs="1" name="moradoreReference" type="tns:EntityReferenceOfmoradores" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:element name="RetornaListaResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RetornaListaResult" type="tns:ArrayOfBoleto" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
+      <s:complexType name="EntityObject" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StructuralObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StructuralObject" abstract="true" />
+      <s:complexType name="EntityKey">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EntitySetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityContainerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityKeyValues" type="tns:ArrayOfEntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityKeyMember" nillable="true" type="tns:EntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfmoradores">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReference" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RelatedEnd">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RelatedEnd" abstract="true" />
       <s:element name="RetornaItem">
         <s:complexType>
           <s:sequence>
@@ -217,12 +193,6 @@
   <wsdl:message name="SalvaArquivoSoapOut">
     <wsdl:part name="parameters" element="tns:SalvaArquivoResponse" />
   </wsdl:message>
-  <wsdl:message name="testeSoapIn">
-    <wsdl:part name="parameters" element="tns:teste" />
-  </wsdl:message>
-  <wsdl:message name="testeSoapOut">
-    <wsdl:part name="parameters" element="tns:testeResponse" />
-  </wsdl:message>
   <wsdl:message name="DownloadBytesSoapIn">
     <wsdl:part name="parameters" element="tns:DownloadBytes" />
   </wsdl:message>
@@ -270,10 +240,6 @@
       <wsdl:input message="tns:SalvaArquivoSoapIn" />
       <wsdl:output message="tns:SalvaArquivoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="teste">
-      <wsdl:input message="tns:testeSoapIn" />
-      <wsdl:output message="tns:testeSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="DownloadBytes">
       <wsdl:input message="tns:DownloadBytesSoapIn" />
       <wsdl:output message="tns:DownloadBytesSoapOut" />
@@ -307,15 +273,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SalvaArquivo">
       <soap:operation soapAction="http://tempuri.org/SalvaArquivo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="teste">
-      <soap:operation soapAction="http://tempuri.org/teste" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -391,15 +348,6 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SalvaArquivo">
       <soap12:operation soapAction="http://tempuri.org/SalvaArquivo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="teste">
-      <soap12:operation soapAction="http://tempuri.org/teste" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
