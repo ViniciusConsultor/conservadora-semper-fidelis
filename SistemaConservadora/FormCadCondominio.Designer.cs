@@ -53,6 +53,8 @@
             this.colidcondominios = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colnome = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colendereco = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FonteDeDados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Paginas)).BeginInit();
@@ -83,6 +85,8 @@
             // 
             this.TabManutencao.Appearance.PageClient.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.TabManutencao.Appearance.PageClient.Options.UseBackColor = true;
+            this.TabManutencao.Controls.Add(this.comboBox1);
+            this.TabManutencao.Controls.Add(this.label6);
             this.TabManutencao.Controls.Add(this.txtEndereco);
             this.TabManutencao.Controls.Add(this.endereco);
             this.TabManutencao.Controls.Add(this.txtNome);
@@ -318,6 +322,25 @@
             this.colendereco.VisibleIndex = 2;
             this.colendereco.Width = 315;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.BDS, "Sindico", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(136, 118);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(277, 21);
+            this.comboBox1.TabIndex = 25;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(56, 121);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Sindico :";
+            // 
             // FormCadCondominio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,5 +389,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colidcondominios;
         private DevExpress.XtraGrid.Columns.GridColumn colnome;
         private DevExpress.XtraGrid.Columns.GridColumn colendereco;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
     }
 }

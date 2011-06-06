@@ -27,11 +27,11 @@
             <s:sequence>
               <s:element minOccurs="0" maxOccurs="1" name="bloco" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="cpf" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="idmoradores" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -99,6 +99,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="endereco" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="idcondominios" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sindico" nillable="true" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -186,6 +187,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ResetarSenha">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="acesso" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetarSenhaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ResetarSenhaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="RetornaListaSoapIn">
@@ -236,6 +252,12 @@
   <wsdl:message name="ApagarSoapOut">
     <wsdl:part name="parameters" element="tns:ApagarResponse" />
   </wsdl:message>
+  <wsdl:message name="ResetarSenhaSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetarSenha" />
+  </wsdl:message>
+  <wsdl:message name="ResetarSenhaSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetarSenhaResponse" />
+  </wsdl:message>
   <wsdl:portType name="MoradoresWebSoap">
     <wsdl:operation name="RetornaLista">
       <wsdl:input message="tns:RetornaListaSoapIn" />
@@ -268,6 +290,10 @@
     <wsdl:operation name="Apagar">
       <wsdl:input message="tns:ApagarSoapIn" />
       <wsdl:output message="tns:ApagarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetarSenha">
+      <wsdl:input message="tns:ResetarSenhaSoapIn" />
+      <wsdl:output message="tns:ResetarSenhaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MoradoresWebSoap" type="tns:MoradoresWebSoap">
@@ -344,6 +370,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ResetarSenha">
+      <soap:operation soapAction="http://tempuri.org/ResetarSenha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MoradoresWebSoap12" type="tns:MoradoresWebSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -412,6 +447,15 @@
     </wsdl:operation>
     <wsdl:operation name="Apagar">
       <soap12:operation soapAction="http://tempuri.org/Apagar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetarSenha">
+      <soap12:operation soapAction="http://tempuri.org/ResetarSenha" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

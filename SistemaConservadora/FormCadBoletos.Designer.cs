@@ -65,7 +65,7 @@
             // 
             // Paginas
             // 
-            this.Paginas.SelectedTabPage = this.TabManutencao;
+            this.Paginas.SelectedTabPage = this.TabAcesso;
             this.Paginas.Size = new System.Drawing.Size(702, 299);
             // 
             // TabAcesso

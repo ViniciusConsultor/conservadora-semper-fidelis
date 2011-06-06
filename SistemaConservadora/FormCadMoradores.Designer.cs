@@ -54,6 +54,10 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colidcondominios = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colnome1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.txtemail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FonteDeDados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Paginas)).BeginInit();
@@ -64,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // FonteDeDados
@@ -76,19 +81,22 @@
             // 
             // Paginas
             // 
-            this.Paginas.SelectedTabPage = this.TabManutencao;
+            this.Paginas.SelectedTabPage = this.TabAcesso;
             this.Paginas.ShowHeaderFocus = DevExpress.Utils.DefaultBoolean.False;
-            this.Paginas.Size = new System.Drawing.Size(703, 401);
+            this.Paginas.Size = new System.Drawing.Size(703, 374);
             // 
             // TabAcesso
             // 
             this.TabAcesso.Controls.Add(this.TabelaData);
-            this.TabAcesso.Size = new System.Drawing.Size(697, 395);
+            this.TabAcesso.Size = new System.Drawing.Size(697, 368);
             // 
             // TabManutencao
             // 
             this.TabManutencao.Appearance.PageClient.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.TabManutencao.Appearance.PageClient.Options.UseBackColor = true;
+            this.TabManutencao.Controls.Add(this.button1);
+            this.TabManutencao.Controls.Add(this.txtemail);
+            this.TabManutencao.Controls.Add(this.label5);
             this.TabManutencao.Controls.Add(this.gridControl1);
             this.TabManutencao.Controls.Add(this.btnRmvCondominio);
             this.TabManutencao.Controls.Add(this.btnAddCondominio);
@@ -102,7 +110,8 @@
             this.TabManutencao.Controls.Add(this.label1);
             this.TabManutencao.Controls.Add(this.lblIdentificacao);
             this.TabManutencao.Controls.Add(this.lblID);
-            this.TabManutencao.Size = new System.Drawing.Size(697, 395);
+            this.TabManutencao.Size = new System.Drawing.Size(697, 368);
+            this.TabManutencao.Paint += new System.Windows.Forms.PaintEventHandler(this.TabManutencao_Paint);
             // 
             // txtNome
             // 
@@ -180,7 +189,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 174);
+            this.label4.Location = new System.Drawing.Point(55, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 14;
@@ -190,7 +199,7 @@
             // 
             this.comboCondominios.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboCondominios.FormattingEnabled = true;
-            this.comboCondominios.Location = new System.Drawing.Point(136, 171);
+            this.comboCondominios.Location = new System.Drawing.Point(136, 175);
             this.comboCondominios.Name = "comboCondominios";
             this.comboCondominios.Size = new System.Drawing.Size(277, 21);
             this.comboCondominios.TabIndex = 15;
@@ -199,7 +208,7 @@
             // btnAddCondominio
             // 
             this.btnAddCondominio.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCondominio.Image")));
-            this.btnAddCondominio.Location = new System.Drawing.Point(419, 166);
+            this.btnAddCondominio.Location = new System.Drawing.Point(422, 170);
             this.btnAddCondominio.Name = "btnAddCondominio";
             this.btnAddCondominio.Size = new System.Drawing.Size(35, 28);
             this.btnAddCondominio.TabIndex = 16;
@@ -209,7 +218,7 @@
             // btnRmvCondominio
             // 
             this.btnRmvCondominio.Image = ((System.Drawing.Image)(resources.GetObject("btnRmvCondominio.Image")));
-            this.btnRmvCondominio.Location = new System.Drawing.Point(619, 333);
+            this.btnRmvCondominio.Location = new System.Drawing.Point(618, 329);
             this.btnRmvCondominio.Name = "btnRmvCondominio";
             this.btnRmvCondominio.Size = new System.Drawing.Size(35, 28);
             this.btnRmvCondominio.TabIndex = 18;
@@ -252,7 +261,7 @@
             this.TabelaData.MainView = this.gridView1;
             this.TabelaData.Margin = new System.Windows.Forms.Padding(0);
             this.TabelaData.Name = "TabelaData";
-            this.TabelaData.Size = new System.Drawing.Size(697, 395);
+            this.TabelaData.Size = new System.Drawing.Size(697, 368);
             this.TabelaData.TabIndex = 1;
             this.TabelaData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -302,10 +311,12 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.FonteDeDados;
-            this.gridControl1.Location = new System.Drawing.Point(59, 203);
+            this.gridControl1.Location = new System.Drawing.Point(58, 199);
             this.gridControl1.MainView = this.gridView2;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(0);
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
             this.gridControl1.Size = new System.Drawing.Size(595, 127);
             this.gridControl1.TabIndex = 19;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -345,11 +356,44 @@
             this.colnome1.VisibleIndex = 1;
             this.colnome1.Width = 551;
             // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // txtemail
+            // 
+            this.txtemail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "email", true));
+            this.txtemail.Location = new System.Drawing.Point(136, 149);
+            this.txtemail.MaxLength = 50;
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(277, 20);
+            this.txtemail.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(56, 152);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Email :";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(419, 68);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Resetar Senha";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormCadMoradores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 440);
+            this.ClientSize = new System.Drawing.Size(703, 413);
             this.Name = "FormCadMoradores";
             this.Text = "Cadastro de Moradores";
             ((System.ComponentModel.ISupportInitialize)(this.FonteDeDados)).EndInit();
@@ -363,6 +407,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,5 +440,9 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn colidcondominios;
         private DevExpress.XtraGrid.Columns.GridColumn colnome1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private System.Windows.Forms.TextBox txtemail;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
     }
 }

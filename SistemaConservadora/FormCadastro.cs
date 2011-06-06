@@ -64,6 +64,7 @@ namespace SistemaConservadora
         private void btnApagar_Click(object sender, EventArgs e)
         {
             Excluir(0);
+            BindGrid();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)

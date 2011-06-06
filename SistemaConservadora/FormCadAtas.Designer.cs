@@ -44,10 +44,13 @@
             this.SalvarArquivo = new System.Windows.Forms.SaveFileDialog();
             this.TabelaData = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colcaminhoArquivo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.coldata = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colidata = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldata = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colidcondominios = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcaminhoArquivo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FonteDeDados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Paginas)).BeginInit();
@@ -64,7 +67,7 @@
             // 
             // Paginas
             // 
-            this.Paginas.SelectedTabPage = this.TabAcesso;
+            this.Paginas.SelectedTabPage = this.TabManutencao;
             this.Paginas.Size = new System.Drawing.Size(702, 299);
             // 
             // TabAcesso
@@ -76,6 +79,8 @@
             // 
             this.TabManutencao.Appearance.PageClient.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.TabManutencao.Appearance.PageClient.Options.UseBackColor = true;
+            this.TabManutencao.Controls.Add(this.label4);
+            this.TabManutencao.Controls.Add(this.txtDescricao);
             this.TabManutencao.Controls.Add(this.lblDownload);
             this.TabManutencao.Controls.Add(this.lblCaminhoArquivo);
             this.TabManutencao.Controls.Add(this.lblIdentificacao);
@@ -92,7 +97,7 @@
             // 
             // txtArquivo
             // 
-            this.txtArquivo.Location = new System.Drawing.Point(130, 107);
+            this.txtArquivo.Location = new System.Drawing.Point(130, 137);
             this.txtArquivo.Name = "txtArquivo";
             this.txtArquivo.Size = new System.Drawing.Size(282, 20);
             this.txtArquivo.TabIndex = 3;
@@ -100,15 +105,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 110);
+            this.label1.Location = new System.Drawing.Point(51, 140);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Arquivo PDF :";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnLocalizar
             // 
-            this.btnLocalizar.Location = new System.Drawing.Point(418, 105);
+            this.btnLocalizar.Location = new System.Drawing.Point(418, 135);
             this.btnLocalizar.Name = "btnLocalizar";
             this.btnLocalizar.Size = new System.Drawing.Size(75, 23);
             this.btnLocalizar.TabIndex = 5;
@@ -123,7 +129,7 @@
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(499, 105);
+            this.btnUpload.Location = new System.Drawing.Point(499, 135);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(75, 23);
             this.btnUpload.TabIndex = 6;
@@ -135,7 +141,7 @@
             // 
             this.cmbCondominios.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.BDS, "idcondominios", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cmbCondominios.FormattingEnabled = true;
-            this.cmbCondominios.Location = new System.Drawing.Point(130, 80);
+            this.cmbCondominios.Location = new System.Drawing.Point(130, 110);
             this.cmbCondominios.Name = "cmbCondominios";
             this.cmbCondominios.Size = new System.Drawing.Size(444, 21);
             this.cmbCondominios.TabIndex = 7;
@@ -143,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(54, 83);
+            this.label2.Location = new System.Drawing.Point(54, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 8;
@@ -153,7 +159,7 @@
             // 
             this.dtReferenteA.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "data", true));
             this.dtReferenteA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtReferenteA.Location = new System.Drawing.Point(130, 54);
+            this.dtReferenteA.Location = new System.Drawing.Point(130, 84);
             this.dtReferenteA.Name = "dtReferenteA";
             this.dtReferenteA.Size = new System.Drawing.Size(444, 20);
             this.dtReferenteA.TabIndex = 9;
@@ -161,17 +167,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 54);
+            this.label3.Location = new System.Drawing.Point(55, 84);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Referente à:";
+            this.label3.Text = "Referente à :";
             // 
             // lblIdentificacao
             // 
             this.lblIdentificacao.AutoSize = true;
             this.lblIdentificacao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "idata", true));
-            this.lblIdentificacao.Location = new System.Drawing.Point(127, 30);
+            this.lblIdentificacao.Location = new System.Drawing.Point(130, 42);
             this.lblIdentificacao.Name = "lblIdentificacao";
             this.lblIdentificacao.Size = new System.Drawing.Size(76, 13);
             this.lblIdentificacao.TabIndex = 12;
@@ -180,7 +186,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(50, 30);
+            this.lblID.Location = new System.Drawing.Point(50, 42);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(74, 13);
             this.lblID.TabIndex = 11;
@@ -189,7 +195,7 @@
             // lblCaminhoArquivo
             // 
             this.lblCaminhoArquivo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "caminhoArquivo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.lblCaminhoArquivo.Location = new System.Drawing.Point(130, 150);
+            this.lblCaminhoArquivo.Location = new System.Drawing.Point(130, 180);
             this.lblCaminhoArquivo.Name = "lblCaminhoArquivo";
             this.lblCaminhoArquivo.Size = new System.Drawing.Size(383, 13);
             this.lblCaminhoArquivo.TabIndex = 13;
@@ -197,7 +203,7 @@
             // lblDownload
             // 
             this.lblDownload.AutoSize = true;
-            this.lblDownload.Location = new System.Drawing.Point(519, 150);
+            this.lblDownload.Location = new System.Drawing.Point(519, 180);
             this.lblDownload.Name = "lblDownload";
             this.lblDownload.Size = new System.Drawing.Size(55, 13);
             this.lblDownload.TabIndex = 14;
@@ -229,7 +235,8 @@
             this.colidata,
             this.coldata,
             this.colidcondominios,
-            this.colcaminhoArquivo});
+            this.colcaminhoArquivo,
+            this.gridColumn1});
             this.gridView1.GridControl = this.TabelaData;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -241,13 +248,13 @@
             this.gridView1.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // colcaminhoArquivo
+            // colidata
             // 
-            this.colcaminhoArquivo.Caption = "Caminho Do Arquivo";
-            this.colcaminhoArquivo.FieldName = "caminhoArquivo";
-            this.colcaminhoArquivo.Name = "colcaminhoArquivo";
-            this.colcaminhoArquivo.Visible = true;
-            this.colcaminhoArquivo.VisibleIndex = 3;
+            this.colidata.Caption = "Id";
+            this.colidata.FieldName = "idata";
+            this.colidata.Name = "colidata";
+            this.colidata.Visible = true;
+            this.colidata.VisibleIndex = 0;
             // 
             // coldata
             // 
@@ -257,21 +264,47 @@
             this.coldata.Visible = true;
             this.coldata.VisibleIndex = 1;
             // 
-            // colidata
-            // 
-            this.colidata.Caption = "Id";
-            this.colidata.FieldName = "idata";
-            this.colidata.Name = "colidata";
-            this.colidata.Visible = true;
-            this.colidata.VisibleIndex = 0;
-            // 
             // colidcondominios
             // 
             this.colidcondominios.Caption = "Condominio";
             this.colidcondominios.FieldName = "idcondominios";
             this.colidcondominios.Name = "colidcondominios";
             this.colidcondominios.Visible = true;
-            this.colidcondominios.VisibleIndex = 2;
+            this.colidcondominios.VisibleIndex = 3;
+            // 
+            // colcaminhoArquivo
+            // 
+            this.colcaminhoArquivo.Caption = "Caminho Do Arquivo";
+            this.colcaminhoArquivo.FieldName = "caminhoArquivo";
+            this.colcaminhoArquivo.Name = "colcaminhoArquivo";
+            this.colcaminhoArquivo.Visible = true;
+            this.colcaminhoArquivo.VisibleIndex = 4;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Descrição";
+            this.gridColumn1.FieldName = "descricao";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.BDS, "descricao", true));
+            this.txtDescricao.Location = new System.Drawing.Point(130, 58);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(444, 20);
+            this.txtDescricao.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(63, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Descrição :";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // FormCadAtas
             // 
@@ -315,5 +348,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn coldata;
         private DevExpress.XtraGrid.Columns.GridColumn colidata;
         private DevExpress.XtraGrid.Columns.GridColumn colidcondominios;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDescricao;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

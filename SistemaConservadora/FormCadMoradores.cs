@@ -23,6 +23,8 @@ namespace SistemaConservadora
             comboCondominios.DataSource = condominioWeb.RetornaLista(Funcoes.Acesso);
             comboCondominios.DisplayMember = "nome";
             comboCondominios.ValueMember = "IdCondominios";
+
+          
             condominioLista = new List<MoradoresWeb.condominio>();
             BindGrid();
 
@@ -46,7 +48,7 @@ namespace SistemaConservadora
         private void btnAddCondominio_Click(object sender, EventArgs e)
         {          
             MoradoresWeb.condominio condo = moradoresWeb.RetornaCondominio(Convert.ToInt32(comboCondominios.SelectedValue), Funcoes.Acesso);
-       
+            
             if (condominioLista.Where(p => p.idcondominios == condo.idcondominios).Count() > 0) 
             {
                 MessageBox.Show("Condominio já cadastrado para este morador!", "Atenção!");
@@ -98,7 +100,7 @@ namespace SistemaConservadora
         public override void Adicionar()
         {
             MoradoresWeb.moradores moradores = (MoradoresWeb.moradores)BDS.Current;
-  
+           
             int id;
             if ((id = moradoresWeb.AdicionaMorador(moradores, Funcoes.Acesso)) > 0)
             {
@@ -152,6 +154,22 @@ namespace SistemaConservadora
             foreach (MoradoresWeb.condominio condominio in condominioLista.ToArray())
                 FonteDeDados.Add(condominio);
             gridControl1.DataSource = FonteDeDados;
+        }
+
+        private void isSindico_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabManutencao_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(moradoresWeb.ResetarSenha((BDS.Current as MoradoresWeb.moradores).idmoradores, Funcoes.Acesso));
+            MessageBox.Show("Senha redefinida com sucesso!");
         }
     }
 }
