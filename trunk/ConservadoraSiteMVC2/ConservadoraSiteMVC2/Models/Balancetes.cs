@@ -161,7 +161,8 @@ namespace ConservadoraSiteMVC2.Models
                     join c in model.condominios_moradores on p.idcondominios equals c.idcondominios
                     join d in model.moradores on c.idmoradores equals d.idmoradores
                     where d.idmoradores == mor.idmoradores
-                    || p.idcondominios == (from x in model.condominios where x.Sindico == mor.idmoradores select x.idcondominios).FirstOrDefault()
+                    || (p.idcondominios == (from x in model.condominios where x.Sindico == mor.idmoradores select x.idcondominios).FirstOrDefault()
+                        && (p.apenasSindico))
                     select p;
             return q.ToList();
         }

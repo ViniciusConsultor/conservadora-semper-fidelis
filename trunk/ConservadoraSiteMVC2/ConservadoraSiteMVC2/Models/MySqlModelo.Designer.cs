@@ -24,6 +24,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("acmesite_conservadoraModel", "fk_condominios_has_inquilinos_condominios1", "condominios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ConservadoraSiteMVC2.Models.condominio), "condominios_moradores", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ConservadoraSiteMVC2.Models.condominios_moradores), true)]
 [assembly: EdmRelationshipAttribute("acmesite_conservadoraModel", "fk_Recados_condominios1", "condominios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ConservadoraSiteMVC2.Models.condominio), "recados", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ConservadoraSiteMVC2.Models.recado), true)]
 [assembly: EdmRelationshipAttribute("acmesite_conservadoraModel", "fk_condominios_has_inquilinos_inquilinos1", "moradores", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ConservadoraSiteMVC2.Models.moradores), "condominios_moradores", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ConservadoraSiteMVC2.Models.condominios_moradores), true)]
+[assembly: EdmRelationshipAttribute("acmesite_conservadoraModel", "balancete_condominios", "balancete", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ConservadoraSiteMVC2.Models.balancete), "condominio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ConservadoraSiteMVC2.Models.condominio))]
 
 #endregion
 
@@ -378,6 +379,30 @@ namespace ConservadoraSiteMVC2.Models
         private global::System.Int32 _idcondominios;
         partial void OnidcondominiosChanging(global::System.Int32 value);
         partial void OnidcondominiosChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descricao
+        {
+            get
+            {
+                return _descricao;
+            }
+            set
+            {
+                OndescricaoChanging(value);
+                ReportPropertyChanging("descricao");
+                _descricao = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descricao");
+                OndescricaoChanged();
+            }
+        }
+        private global::System.String _descricao;
+        partial void OndescricaoChanging(global::System.String value);
+        partial void OndescricaoChanged();
 
         #endregion
     
@@ -439,11 +464,13 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         /// <param name="idbalancete">Initial value of the idbalancete property.</param>
         /// <param name="idcondominios">Initial value of the idcondominios property.</param>
-        public static balancete Createbalancete(global::System.Int32 idbalancete, global::System.Int32 idcondominios)
+        /// <param name="apenasSindico">Initial value of the apenasSindico property.</param>
+        public static balancete Createbalancete(global::System.Int32 idbalancete, global::System.Int32 idcondominios, global::System.Boolean apenasSindico)
         {
             balancete balancete = new balancete();
             balancete.idbalancete = idbalancete;
             balancete.idcondominios = idcondominios;
+            balancete.apenasSindico = apenasSindico;
             return balancete;
         }
 
@@ -548,6 +575,54 @@ namespace ConservadoraSiteMVC2.Models
         private global::System.Int32 _idcondominios;
         partial void OnidcondominiosChanging(global::System.Int32 value);
         partial void OnidcondominiosChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descricao
+        {
+            get
+            {
+                return _descricao;
+            }
+            set
+            {
+                OndescricaoChanging(value);
+                ReportPropertyChanging("descricao");
+                _descricao = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descricao");
+                OndescricaoChanged();
+            }
+        }
+        private global::System.String _descricao;
+        partial void OndescricaoChanging(global::System.String value);
+        partial void OndescricaoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean apenasSindico
+        {
+            get
+            {
+                return _apenasSindico;
+            }
+            set
+            {
+                OnapenasSindicoChanging(value);
+                ReportPropertyChanging("apenasSindico");
+                _apenasSindico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("apenasSindico");
+                OnapenasSindicoChanged();
+            }
+        }
+        private global::System.Boolean _apenasSindico;
+        partial void OnapenasSindicoChanging(global::System.Boolean value);
+        partial void OnapenasSindicoChanged();
 
         #endregion
     
@@ -587,6 +662,28 @@ namespace ConservadoraSiteMVC2.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<condominio>("acmesite_conservadoraModel.fk_balancetes_condominios10", "condominios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("acmesite_conservadoraModel", "balancete_condominios", "condominio")]
+        public EntityCollection<condominio> condominios1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<condominio>("acmesite_conservadoraModel.balancete_condominios", "condominio");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<condominio>("acmesite_conservadoraModel.balancete_condominios", "condominio", value);
                 }
             }
         }
@@ -742,6 +839,30 @@ namespace ConservadoraSiteMVC2.Models
         private global::System.String _sitiuacao;
         partial void OnsitiuacaoChanging(global::System.String value);
         partial void OnsitiuacaoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> valor
+        {
+            get
+            {
+                return _valor;
+            }
+            set
+            {
+                OnvalorChanging(value);
+                ReportPropertyChanging("valor");
+                _valor = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("valor");
+                OnvalorChanged();
+            }
+        }
+        private Nullable<global::System.Single> _valor;
+        partial void OnvalorChanging(Nullable<global::System.Single> value);
+        partial void OnvalorChanged();
 
         #endregion
     
@@ -886,6 +1007,30 @@ namespace ConservadoraSiteMVC2.Models
         private global::System.String _nome;
         partial void OnnomeChanging(global::System.String value);
         partial void OnnomeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Sindico
+        {
+            get
+            {
+                return _Sindico;
+            }
+            set
+            {
+                OnSindicoChanging(value);
+                ReportPropertyChanging("Sindico");
+                _Sindico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Sindico");
+                OnSindicoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Sindico;
+        partial void OnSindicoChanging(Nullable<global::System.Int32> value);
+        partial void OnSindicoChanged();
 
         #endregion
     
@@ -975,6 +1120,28 @@ namespace ConservadoraSiteMVC2.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<recado>("acmesite_conservadoraModel.fk_Recados_condominios1", "recados", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("acmesite_conservadoraModel", "balancete_condominios", "balancete")]
+        public EntityCollection<balancete> balancetes1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<balancete>("acmesite_conservadoraModel.balancete_condominios", "balancete");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<balancete>("acmesite_conservadoraModel.balancete_condominios", "balancete", value);
                 }
             }
         }
@@ -1345,24 +1512,24 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String senha
+        public global::System.String email
         {
             get
             {
-                return _senha;
+                return _email;
             }
             set
             {
-                OnsenhaChanging(value);
-                ReportPropertyChanging("senha");
-                _senha = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("senha");
-                OnsenhaChanged();
+                OnemailChanging(value);
+                ReportPropertyChanging("email");
+                _email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("email");
+                OnemailChanged();
             }
         }
-        private global::System.String _senha;
-        partial void OnsenhaChanging(global::System.String value);
-        partial void OnsenhaChanged();
+        private global::System.String _email;
+        partial void OnemailChanging(global::System.String value);
+        partial void OnemailChanged();
 
         #endregion
     

@@ -119,6 +119,7 @@
     <Compile Include="Controllers\AtasController.cs" />
     <Compile Include="Controllers\BalancetesController.cs" />
     <Compile Include="Controllers\BoletosController.cs" />
+    <Compile Include="Controllers\FaleConoscoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecadosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -129,11 +130,12 @@
     <Compile Include="Models\Balancetes.cs" />
     <Compile Include="Models\Boletos.cs" />
     <Compile Include="Models\Condominios.cs" />
+    <Compile Include="Models\FaleConoscoModel.cs" />
     <Compile Include="Models\Moradores.cs" />
-    <Compile Include="Models\MSModelo.Designer.cs">
+    <Compile Include="Models\MySqlModelo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MSModelo.edmx</DependentUpon>
+      <DependentUpon>MySqlModelo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Recados.cs" />
     <Compile Include="Models\RecadosCompleto.cs" />
@@ -237,10 +239,15 @@
     <Content Include="Content\Imagens\pedro.PNG" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Views\Account\LogOn.aspx" />
+    <Content Include="Views\Account\Register.aspx" />
     <Content Include="Views\Atas\Index.aspx" />
     <Content Include="Views\Balancetes\Index.aspx" />
     <Content Include="Views\Boletos\Index.aspx" />
+    <Content Include="Views\FaleConosco\EmailSucesso.aspx" />
+    <Content Include="Views\FaleConosco\Index.aspx" />
     <Content Include="Views\Recados\Index.aspx" />
     <Content Include="Views\Shared\Menu.ascx" />
     <Content Include="Web.config">
@@ -266,9 +273,6 @@
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
-    <Content Include="Views\Account\ChangePassword.aspx" />
-    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
-    <Content Include="Views\Account\Register.aspx" />
     <Content Include="Views\Home\About.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
@@ -292,9 +296,9 @@
     <Folder Include="Boletos\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\MSModelo.edmx">
+    <EntityDeploy Include="Models\MySqlModelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MSModelo.Designer.cs</LastGenOutput>
+      <LastGenOutput>MySqlModelo.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
