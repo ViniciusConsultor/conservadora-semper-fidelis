@@ -48,9 +48,11 @@
             this.coldata = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colidcondominios = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colcaminhoArquivo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.FonteDeDados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Paginas)).BeginInit();
@@ -69,6 +71,9 @@
             // 
             this.Paginas.SelectedTabPage = this.TabAcesso;
             this.Paginas.Size = new System.Drawing.Size(702, 299);
+            this.Paginas.Controls.SetChildIndex(this.checkBox1, 0);
+            this.Paginas.Controls.SetChildIndex(this.TabManutencao, 0);
+            this.Paginas.Controls.SetChildIndex(this.TabAcesso, 0);
             // 
             // TabAcesso
             // 
@@ -79,6 +84,7 @@
             // 
             this.TabManutencao.Appearance.PageClient.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.TabManutencao.Appearance.PageClient.Options.UseBackColor = true;
+            this.TabManutencao.Controls.Add(this.checkBox2);
             this.TabManutencao.Controls.Add(this.label4);
             this.TabManutencao.Controls.Add(this.txtDescricao);
             this.TabManutencao.Controls.Add(this.lblDownload);
@@ -279,6 +285,14 @@
             this.colcaminhoArquivo.Visible = true;
             this.colcaminhoArquivo.VisibleIndex = 4;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Descrição";
+            this.gridColumn1.FieldName = "descricao";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 1;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -296,13 +310,26 @@
             this.txtDescricao.Size = new System.Drawing.Size(444, 20);
             this.txtDescricao.TabIndex = 17;
             // 
-            // gridColumn1
+            // checkBox1
             // 
-            this.gridColumn1.Caption = "Descrição";
-            this.gridColumn1.FieldName = "descricao";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(0, 0);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.BDS, "apenasSindico", true));
+            this.checkBox2.Location = new System.Drawing.Point(130, 211);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(181, 17);
+            this.checkBox2.TabIndex = 19;
+            this.checkBox2.Text = "Disponível apenas para sindico?";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // FormCadBalancetes
             // 
@@ -314,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Paginas)).EndInit();
             this.Paginas.ResumeLayout(false);
+            this.Paginas.PerformLayout();
             this.TabAcesso.ResumeLayout(false);
             this.TabManutencao.ResumeLayout(false);
             this.TabManutencao.PerformLayout();
@@ -349,5 +377,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
