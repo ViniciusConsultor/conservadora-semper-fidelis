@@ -37,10 +37,11 @@
                 <% Html.RenderPartial("LogOnUserControl"); %>
             </div> 
             
-            <div id="menucontainer">
-            
-              <% Html.RenderPartial("Menu"); %>
-            
+            <div id="menucontainer">            
+              <% 
+                  if(Request.IsAuthenticated)
+                  Html.RenderPartial("MenuAdmin");                   
+              %>            
             </div>
         </div>
         <div id="decoracao"></div>

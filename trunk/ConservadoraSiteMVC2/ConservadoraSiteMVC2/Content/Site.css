@@ -450,6 +450,10 @@ div#title
     margin: 0.5em 0;
 }
 
+.display-label
+{
+  font-weight:bold;   
+}
 .text-box
 {
     width: 30em;
