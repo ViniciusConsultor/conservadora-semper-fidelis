@@ -12,6 +12,7 @@ using System.Data.Objects;
 using System.Data.Objects.DataClasses;
 using System.Data.EntityClient;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
@@ -286,6 +287,8 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        [DisplayName("Selecionar Arquivo :")]
+        [Required]
         public global::System.String caminhoArquivo
         {
             get
@@ -310,6 +313,7 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        [DisplayName("Data da Ata:")]
         public Nullable<global::System.DateTime> data
         {
             get
@@ -334,6 +338,7 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
+        [DisplayName("Identificação :")]
         public global::System.Int32 idata
         {
             get
@@ -361,6 +366,7 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        [DisplayName("Identificação do Condomínio :")]
         public global::System.Int32 idcondominios
         {
             get
@@ -385,6 +391,7 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        [DisplayName("Descrição :")]
         public global::System.String descricao
         {
             get
@@ -415,6 +422,7 @@ namespace ConservadoraSiteMVC2.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("acmesite_conservadoraModel", "fk_balancetes_condominios1", "condominios")]
+        [DisplayName("Condominio :")]
         public condominio condominio
         {
             get
@@ -938,6 +946,7 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        [DisplayName("Endereço :")]
         public global::System.String endereco
         {
             get
@@ -962,6 +971,7 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
+        [DisplayName("Identificação :")]
         public global::System.Int32 idcondominios
         {
             get
@@ -989,6 +999,7 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        [DisplayName("Nome :")]
         public global::System.String nome
         {
             get
@@ -1013,6 +1024,7 @@ namespace ConservadoraSiteMVC2.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        [DisplayName("Sindico :")]
         public Nullable<global::System.Int32> Sindico
         {
             get
@@ -1043,6 +1055,7 @@ namespace ConservadoraSiteMVC2.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("acmesite_conservadoraModel", "fk_balancetes_condominios1", "atas")]
+        [DisplayName("Atas :")]
         public EntityCollection<ata> atas
         {
             get

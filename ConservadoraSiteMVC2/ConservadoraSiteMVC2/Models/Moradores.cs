@@ -152,8 +152,8 @@ namespace ConservadoraSiteMVC2.Models
             try
             {
                 conservadoraEntities model = Conexao.getInstance();
-                IQueryable<condominio> i = from p in model.condominios where p.idcondominios == id select p;
-                condominio condo = i.First();
+                IQueryable<moradores> i = from p in model.moradores where p.idmoradores == id select p;
+                moradores condo = i.First();
                 model.DeleteObject(condo);
                 model.SaveChanges();
                 return true;
