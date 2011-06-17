@@ -118,7 +118,7 @@ namespace ConservadoraSiteMVC2.Controllers
         {
             controle.ClearPassword(controle.RetornaItem(id));
             ViewData["Mensagem"] = "Senha redefinida com sucesso!";
-            return RedirectToAction("Index");
+            return RedirectToAction("Index",ViewData);
         }
     }
 }
