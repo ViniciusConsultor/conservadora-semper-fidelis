@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Adm. de Moradores</h2>
-    <%:ViewData["Mensagem"] %>
+    <%:ViewData["Mensagem"] != null ? ViewData["Mensagem"].ToString() : "" %>
     <center>
     <table>
         <tr>
